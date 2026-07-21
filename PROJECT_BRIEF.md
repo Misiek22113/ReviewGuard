@@ -2,7 +2,9 @@
 
 ## Cel projektu
 
-ReviewGuard to web app SaaS dla lokalnych firm, ktora pomaga monitorowac opinie Google, szybko reagowac na negatywne lub podejrzane recenzje oraz zbierac wiecej prawdziwych opinii od klientow.
+ReviewGuard to docelowo web app SaaS dla lokalnych firm, ktora pomaga monitorowac opinie Google, szybko reagowac na negatywne lub podejrzane recenzje oraz zbierac wiecej prawdziwych opinii od klientow.
+
+Pierwszy etap nie jest pelnym SaaS. To walidacyjny concierge MVP dla restauracji: landing page, oferta audytu opinii Google wedlug checklisty, formularz leadowy mailto i outbound do 20-50 lokali.
 
 Produkt jest skierowany do wlascicieli malych firm: salonow beauty, gabinetow stomatologicznych, fizjoterapeutow, restauracji, warsztatow, trenerow, korepetytorow i innych lokalnych uslugodawcow.
 
@@ -21,18 +23,53 @@ Wlasciciele czesto:
 
 "Chron reputacje swojej firmy w Google. Dostawaj alerty o negatywnych opiniach, generuj profesjonalne odpowiedzi i zbieraj wiecej prawdziwych recenzji od klientow."
 
-## MVP
+## Etap 0: walidacja rynku
+
+Najwazniejszym ryzykiem jest popyt, nie technologia. Przed budowa panelu, bazy danych, logowania i integracji Google nalezy sprawdzic, czy wlasciciele restauracji reaguja na oferte platnego audytu opinii Google.
+
+### Cel walidacji
+
+- zdobyc feedback od 20-50 restauracji,
+- sprawdzic, czy ktos pyta o cene, rozmowe lub pilotaz,
+- zweryfikowac gotowosc placenia od 49 zl / miesiac,
+- nauczyc sie, jak restauratorzy opisuja problem opinii Google wlasnymi slowami.
+
+### Walidacyjne MVP
+
+- landing page kierowany do restauracji,
+- jasne CTA: "Sprawdz moja wizytowke" i "Zapisz sie na pilotaz",
+- formularz leadowy mailto bez backendu,
+- obietnica audytu opinii Google wedlug checklisty,
+- przykladowy mini-raport zamiast dashboardu,
+- cena pilotazowa od 49 zl / miesiac,
+- outbound email/formularze WWW.
+
+### Oferta pilotazu
+
+W pilotazu uzytkownik dostaje recznie przygotowany audyt opinii:
+
+- opinie 1-3 gwiazdki wymagajace reakcji,
+- podejrzane lub ryzykowne wzorce opinii,
+- propozycje profesjonalnych odpowiedzi,
+- plan zbierania prawdziwych opinii od gosci,
+- rekomendowane kolejne kroki.
+
+Nie obiecujemy automatycznego usuwania opinii. Nie sugerujemy manipulowania recenzjami. Nie generujemy falszywych opinii.
+
+## Docelowe MVP SaaS
+
+Ponizszy zakres ma sens dopiero po sygnalach popytu z etapu walidacyjnego.
 
 ### Landing page
 
-Landing page powinien jasno tlumaczyc produkt i kierowac do rejestracji lub zapisu do bety.
+Landing page powinien jasno tlumaczyc produkt i kierowac do zapisu na pilotaz lub zostawienia maila.
 
 Sekcje:
 
 - hero z mocnym komunikatem,
 - problem: negatywne i falszywe opinie Google,
 - rozwiazanie: monitoring, alerty, odpowiedzi, zbieranie opinii,
-- dla kogo: lokalne firmy uslugowe,
+- dla kogo: najpierw restauracje, pozniej inne lokalne firmy uslugowe,
 - cennik,
 - CTA do zalozenia konta lub zostawienia maila.
 
@@ -257,27 +294,32 @@ Dashboard powinien byc najwazniejszym ekranem po zalogowaniu.
 
 ## Pierwszy etap implementacji
 
-1. Struktura projektu.
-2. Landing page.
-3. Auth.
-4. Dashboard.
-5. CRUD firmy.
-6. Reczne dodawanie lub import opinii.
-7. Generator odpowiedzi.
-8. Oznaczanie podejrzanych opinii.
-9. Generowanie linku i tekstu prosby o opinie.
-10. Architektura pod pozniejsza integracje z Google API.
+1. Dopolerowac landing pod walidacje restauracji.
+2. Dodac formularz leadowy mailto bez backendu.
+3. Przygotowac playbook outbound do 20-50 restauracji.
+4. Recznie zebrac sygnaly popytu.
+5. Dopiero po potwierdzeniu popytu budowac panel, baze danych, platnosci i integracje.
 
-## Definicja ukonczenia MVP
+## Definicja ukonczenia walidacyjnego MVP
 
-MVP jest gotowe, gdy uzytkownik moze:
+Walidacyjne MVP jest gotowe, gdy:
 
-- zalozyc konto,
-- dodac firme,
-- dodac kilka opinii recznie,
-- zobaczyc dashboard reputacji,
-- dostac oznaczenie negatywnych lub podejrzanych opinii,
-- wygenerowac odpowiedz na opinie,
-- skopiowac odpowiedz,
-- wygenerowac tekst prosby o pozytywna opinie,
-- zobaczyc prosty cennik i CTA do platnego planu.
+- landing mowi konkretnie do restauracji,
+- CTA prowadza do formularza pilotazu,
+- formularz tworzy gotowa wiadomosc mailto,
+- cena od 49 zl / miesiac jest widoczna,
+- playbook pozwala wyslac 20-50 wiadomosci outbound,
+- komunikacja nie obiecuje usuwania opinii ani manipulowania recenzjami.
+
+## Kolejny etap po potwierdzeniu popytu
+
+Po realnych sygnalach popytu mozna wrocic do docelowego SaaS MVP:
+
+1. Auth.
+2. Dashboard.
+3. CRUD firmy.
+4. Reczne dodawanie lub import opinii.
+5. Generator odpowiedzi.
+6. Oznaczanie podejrzanych opinii.
+7. Generowanie linku i tekstu prosby o opinie.
+8. Architektura pod pozniejsza integracje z Google API.

@@ -15,9 +15,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ReviewGuard - monitoring opinii Google",
+  title: "ReviewGuard - audyt opinii Google dla restauracji",
   description:
-    "Panel dla lokalnych firm do monitorowania negatywnych opinii Google, szybkiej reakcji i zbierania prawdziwych recenzji od klientów.",
+    "Audyt opinii Google dla restauracji: recenzje wymagajace reakcji, podejrzane wpisy i gotowe propozycje odpowiedzi.",
 };
 
 export default function RootLayout({

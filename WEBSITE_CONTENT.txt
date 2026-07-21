@@ -1,0 +1,180 @@
+REVIEWGUARD — AKTUALNY CONTENT STRONY
+
+
+=== SEO / METADATA ===
+
+Title:
+ReviewGuard - audyt opinii Google dla restauracji
+
+Description:
+Audyt opinii Google dla restauracji: recenzje wymagajace reakcji, podejrzane wpisy i gotowe propozycje odpowiedzi.
+
+
+=== NAWIGACJA ===
+
+Logo:
+RG
+ReviewGuard
+audyt opinii Google
+
+Przycisk:
+Zapisz sie na pilotaz
+
+
+=== HERO / PIERWSZA SEKCJA ===
+
+Etykieta:
+dla restauracji i lokali gastronomicznych
+
+Naglowek:
+Sprawdz, czy opinie Google nie zabieraja Ci rezerwacji.
+
+Opis:
+Audyt opinii Google dla restauracji: wskazuje recenzje wymagajace reakcji, podejrzane wpisy i podpowiada, na co odpowiedziec w pierwszej kolejnosci.
+
+Glowny przycisk:
+Sprawdz moja wizytowke
+
+Drugi przycisk:
+Zapisz sie na pilotaz
+
+Informacja pod przyciskami:
+Pilotaz dla pierwszych restauracji. Bez obietnic usuwania opinii — dostajesz konkretna analize i plan reakcji.
+
+
+=== PRZYKLADOWY MINI-AUDYT ===
+
+Etykieta:
+przykladowy mini-audyt
+
+Naglowek:
+Restauracja po weekendzie
+
+Opis:
+Zamiast panelu SaaS na start dostajesz konkretna analize opinii wedlug checklisty i gotowa liste dzialan.
+
+Karta 1:
+Ryzyko
+3 opinie bez odpowiedzi
+Dwie z nich sa widoczne wysoko w profilu i moga zniechecac nowych gosci.
+
+Karta 2:
+Szybka reakcja
+24-48 h
+Najpierw odpowiadamy na najnowsze negatywne wpisy, bez eskalowania konfliktu.
+
+Karta 3:
+Do weryfikacji
+2 podejrzane wpisy
+Sprawdzamy wzorce i wskazujemy, czy sa podstawy do zgloszenia ich do Google.
+
+
+=== SEKCJA: PROBLEM ===
+
+Etykieta:
+problem
+
+Naglowek:
+Jedna zla opinia moze wisiec wyzej niz menu dnia.
+
+Problemy:
+1. Nie widzisz nowych negatywnych opinii wystarczajaco szybko.
+2. Nie wiesz, jak odpowiedziec profesjonalnie, bez przyznawania winy.
+3. Nie wiesz, ktore podejrzane wpisy warto zglosic do Google.
+
+
+=== SEKCJA: CO DOSTAJESZ ===
+
+Etykieta:
+co dostajesz
+
+Naglowek:
+Audyt opinii, ktory da sie wdrozyc bez nowego systemu.
+
+Opis:
+W pilotazu nie podlaczamy jeszcze API Google. Sprawdzamy opinie wedlug checklisty i odsylamy konkret: co odpowiedziec, co obserwowac i ktore wpisy warto zweryfikowac lub zglosic.
+
+Zakres audytu:
+1. Opinie 1-3 gwiazdki, ktore wymagaja spokojnej odpowiedzi
+2. Podejrzane wzorce: puste opinie, serie negatywnych wpisow, agresywny ton
+3. Gotowe propozycje odpowiedzi do wklejenia w Google
+4. Materialy pomocnicze do zgloszenia opinii naruszajacej zasady Google
+
+
+=== SEKCJA: PILOTAZ ===
+
+Etykieta:
+pilotaz
+
+Naglowek:
+Sprawdzamy, czy taki audyt ma sens dla restauracji.
+
+Opis:
+To wczesny pilotaz. Chcemy poznac realne problemy restauratorow i sprawdzic, czy analiza opinii oraz gotowy plan reakcji sa dla nich pomocne.
+
+Kroki:
+01. Zostawiasz link do profilu Google.
+02. Sprawdzam opinie wedlug checklisty i przygotowuje mini-audyt.
+03. Dostajesz plan reakcji, propozycje odpowiedzi i nastepne kroki.
+
+
+=== SEKCJA: FORMULARZ ===
+
+Etykieta:
+formularz
+
+Naglowek:
+Chcesz audyt opinii dla swojej restauracji?
+
+Opis:
+Wyslij link do profilu Google. Odpowiem z informacja, czy widac opinie wymagajace reakcji i czy pilotaz ma sens dla Twojego lokalu.
+
+Pole 1:
+Imie
+Placeholder: np. Jakub
+
+Pole 2:
+Email
+Placeholder: kontakt@restauracja.pl
+
+Pole 3:
+Nazwa restauracji
+Placeholder: np. Restauracja Rynek 12
+
+Pole 4:
+Link do profilu Google
+Placeholder: https://maps.google.com/...
+
+Pole 5:
+Najwiekszy problem z opiniami
+Placeholder: np. Mamy kilka opinii 1-2 gwiazdki bez odpowiedzi albo podejrzany wpis, ktory chcemy zweryfikowac.
+
+Przycisk:
+Przygotuj maila z prosba o audyt
+
+Informacja pod formularzem:
+Formularz otworzy Twoj program pocztowy z gotowa wiadomoscia. Na tym etapie dane nie sa zapisywane w aplikacji.
+
+Komunikat po kliknieciu:
+Jesli program pocztowy sie nie otworzyl, sprawdz konfiguracje mailto w przegladarce.
+
+
+=== TRESC GENEROWANEGO MAILA ===
+
+Temat:
+Pilotaz ReviewGuard - [nazwa restauracji]
+
+Tresc:
+Czesc,
+
+chce sprawdzic, czy ReviewGuard ma sens dla mojej restauracji.
+
+Imie: [imie]
+Email: [email]
+Restauracja: [nazwa restauracji]
+Link do profilu Google: [link]
+
+Najwiekszy problem z opiniami:
+[opis problemu]
+
+Interesuje mnie udzial w pilotazu audytu opinii Google.

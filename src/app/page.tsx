@@ -1,159 +1,226 @@
+import { LeadForm } from "./LeadForm";
+
+const auditItems = [
+  "Opinie 1-3 gwiazdki, ktore wymagaja spokojnej odpowiedzi",
+  "Podejrzane wzorce: puste opinie, serie negatywnych wpisow, agresywny ton",
+  "Gotowe propozycje odpowiedzi do wklejenia w Google",
+  "Materialy pomocnicze do zgloszenia opinii naruszajacej zasady Google",
+];
+
+const sampleFindings = [
+  {
+    label: "Ryzyko",
+    value: "3 opinie bez odpowiedzi",
+    detail: "Dwie z nich sa widoczne wysoko w profilu i moga zniechecac nowych gosci.",
+  },
+  {
+    label: "Szybka reakcja",
+    value: "24-48 h",
+    detail: "Najpierw odpowiadamy na najnowsze negatywne wpisy, bez eskalowania konfliktu.",
+  },
+  {
+    label: "Do weryfikacji",
+    value: "2 podejrzane wpisy",
+    detail: "Sprawdzamy wzorce i wskazujemy, czy sa podstawy do zgloszenia ich do Google.",
+  },
+];
+
+const outreachSteps = [
+  "Zostawiasz link do profilu Google.",
+  "Sprawdzam opinie wedlug checklisty i przygotowuje mini-audyt.",
+  "Dostajesz plan reakcji, propozycje odpowiedzi i nastepne kroki.",
+];
+
 export default function Home() {
-  const stats = [
-    { label: "nowe opinie", value: "12" },
-    { label: "wymagają reakcji", value: "3" },
-    { label: "średnia ocena", value: "4.7" },
-  ];
-
-  const reviews = [
-    {
-      name: "Anna K.",
-      rating: "1.0",
-      text: "Brak kontaktu, nie polecam.",
-      status: "wymaga odpowiedzi",
-    },
-    {
-      name: "Marek S.",
-      rating: "5.0",
-      text: "Szybka obsługa i świetny kontakt.",
-      status: "zamknięta",
-    },
-    {
-      name: "konto bez nazwy",
-      rating: "1.0",
-      text: "",
-      status: "podejrzana",
-    },
-  ];
-
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f6f3ec] text-[#18211c]">
+    <main className="min-h-screen overflow-hidden bg-[#f7f2e8] text-[#17211c]">
       <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 py-5 sm:px-8 lg:px-10">
-        <nav className="flex items-center justify-between border-b border-[#18211c]/15 pb-5">
-          <div className="flex items-center gap-3">
-            <div className="grid size-10 place-items-center rounded-sm bg-[#18211c] text-sm font-bold text-[#c8f560]">
+        <nav className="flex items-center justify-between border-b border-[#17211c]/15 pb-5">
+          <a className="flex items-center gap-3" href="#top" aria-label="ReviewGuard">
+            <div className="grid size-10 place-items-center rounded-sm bg-[#17211c] text-sm font-bold text-[#d6f36a]">
               RG
             </div>
             <div>
               <p className="text-base font-bold leading-none">ReviewGuard</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#607064]">
-                reputation desk
+              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#657068]">
+                audyt opinii Google
               </p>
             </div>
-          </div>
+          </a>
           <a
-            className="rounded-sm border border-[#18211c] px-4 py-2 text-sm font-semibold transition hover:bg-[#18211c] hover:text-[#f6f3ec]"
-            href="mailto:hello@reviewguard.local"
+            className="rounded-sm border border-[#17211c] px-4 py-2 text-sm font-semibold transition hover:bg-[#17211c] hover:text-[#f7f2e8]"
+            href="#pilot"
           >
-            Dołącz do bety
+            Zapisz sie na pilotaz
           </a>
         </nav>
 
-        <div className="grid flex-1 items-center gap-10 py-12 lg:grid-cols-[0.95fr_1.05fr] lg:py-16">
+        <div
+          id="top"
+          className="grid flex-1 items-center gap-10 py-12 lg:grid-cols-[1.02fr_0.98fr] lg:py-16"
+        >
           <div>
-            <p className="mb-5 inline-flex rounded-sm bg-[#c8f560] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-[0.16em]">
-              monitoring opinii Google
+            <p className="mb-5 inline-flex rounded-sm bg-[#d6f36a] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-[0.16em]">
+              dla restauracji i lokali gastronomicznych
             </p>
-            <h1 className="max-w-3xl text-5xl font-bold leading-[0.95] tracking-normal sm:text-6xl lg:text-7xl">
-              Reaguj, zanim jedna opinia popsuje miesiąc sprzedaży.
+            <h1 className="max-w-4xl text-5xl font-bold leading-[0.95] tracking-normal sm:text-6xl lg:text-7xl">
+              Sprawdz, czy opinie Google nie zabieraja Ci rezerwacji.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-[#526157]">
-              ReviewGuard pomaga lokalnym firmom wykrywać negatywne i podejrzane
-              recenzje, generować spokojne odpowiedzi oraz zbierać więcej
-              prawdziwych opinii od klientów po usłudze.
+              Audyt opinii Google dla restauracji: wskazuje recenzje wymagajace
+              reakcji, podejrzane wpisy i podpowiada, na co odpowiedziec w
+              pierwszej kolejnosci.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
-                className="rounded-sm bg-[#18211c] px-6 py-4 text-center text-sm font-bold text-[#f6f3ec] transition hover:bg-[#2d3b33]"
-                href="#pricing"
+                className="rounded-sm bg-[#17211c] px-6 py-4 text-center text-sm font-bold text-[#f7f2e8] transition hover:bg-[#2e3b34]"
+                href="#pilot"
               >
-                Zobacz plany
+                Sprawdz moja wizytowke
               </a>
               <a
-                className="rounded-sm border border-[#18211c]/25 px-6 py-4 text-center text-sm font-bold transition hover:border-[#18211c]"
-                href="#dashboard-preview"
+                className="rounded-sm border border-[#17211c]/25 px-6 py-4 text-center text-sm font-bold transition hover:border-[#17211c]"
+                href="#offer"
               >
-                Podejrzyj dashboard
+                Zapisz sie na pilotaz
               </a>
             </div>
+            <p className="mt-5 max-w-xl text-sm leading-6 text-[#657068]">
+              Pilotaz dla pierwszych restauracji. Bez obietnic usuwania opinii
+              — dostajesz konkretna analize i plan reakcji.
+            </p>
           </div>
 
-          <div
-            id="dashboard-preview"
-            className="relative rounded-sm border border-[#18211c] bg-[#fffdf6] p-4 shadow-[14px_14px_0_#18211c]"
-          >
-            <div className="mb-5 flex items-center justify-between border-b border-[#18211c]/15 pb-4">
-              <div>
-                <p className="text-sm font-semibold text-[#607064]">
-                  Salon Nova, Kraków
-                </p>
-                <h2 className="text-2xl font-bold">Status reputacji</h2>
-              </div>
-              <span className="rounded-sm bg-[#ffe072] px-3 py-1 font-mono text-xs font-semibold">
-                wymaga reakcji
-              </span>
-            </div>
-
-            <div className="grid grid-cols-3 gap-3">
-              {stats.map((stat) => (
-                <div
-                  className="rounded-sm border border-[#18211c]/10 bg-[#f6f3ec] p-4"
-                  key={stat.label}
-                >
-                  <p className="font-mono text-2xl font-semibold">
-                    {stat.value}
-                  </p>
-                  <p className="mt-2 text-xs font-medium uppercase text-[#607064]">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
+          <aside className="border border-[#17211c] bg-[#fffdf7] p-5 shadow-[14px_14px_0_#17211c]">
+            <div className="border-b border-[#17211c]/15 pb-5">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#657068]">
+                przykladowy mini-audyt
+              </p>
+              <h2 className="mt-3 text-3xl font-bold">Restauracja po weekendzie</h2>
+              <p className="mt-3 text-sm leading-6 text-[#526157]">
+                Zamiast panelu SaaS na start dostajesz konkretna analize opinii
+                wedlug checklisty i gotowa liste dzialan.
+              </p>
             </div>
 
             <div className="mt-5 space-y-3">
-              {reviews.map((review) => (
+              {sampleFindings.map((finding) => (
                 <article
-                  className="rounded-sm border border-[#18211c]/10 bg-white p-4"
-                  key={`${review.name}-${review.status}`}
+                  className="border border-[#17211c]/10 bg-[#f7f2e8] p-4"
+                  key={finding.label}
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="font-semibold">{review.name}</p>
-                      <p className="mt-1 text-sm text-[#607064]">
-                        {review.text || "Brak treści opinii"}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-mono font-semibold">{review.rating}</p>
-                      <p className="mt-1 text-xs text-[#607064]">
-                        {review.status}
-                      </p>
-                    </div>
-                  </div>
+                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[#657068]">
+                    {finding.label}
+                  </p>
+                  <h3 className="mt-2 text-xl font-bold">{finding.value}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[#526157]">
+                    {finding.detail}
+                  </p>
                 </article>
               ))}
             </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="border-y border-[#17211c]/15 bg-[#fffdf7]" id="offer">
+        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
+          <div>
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#657068]">
+              problem
+            </p>
+            <h2 className="mt-3 text-4xl font-bold leading-tight">
+              Jedna zla opinia moze wisiec wyzej niz menu dnia.
+            </h2>
+          </div>
+          <div className="grid gap-3 md:grid-cols-3">
+            {[
+              "Nie widzisz nowych negatywnych opinii wystarczajaco szybko.",
+              "Nie wiesz, jak odpowiedziec profesjonalnie, bez przyznawania winy.",
+              "Nie wiesz, ktore podejrzane wpisy warto zglosic do Google.",
+            ].map((item) => (
+              <div className="border border-[#17211c]/10 bg-[#f7f2e8] p-5" key={item}>
+                <p className="text-base font-semibold leading-7">{item}</p>
+              </div>
+            ))}
           </div>
         </div>
+      </section>
 
-        <div
-          id="pricing"
-          className="grid gap-3 border-t border-[#18211c]/15 pt-5 md:grid-cols-3"
-        >
-          {[
-            ["Starter", "49 zł/mies.", "Monitoring jednej wizytówki i alerty."],
-            ["Pro", "99 zł/mies.", "Generator odpowiedzi i case file."],
-            ["Rescue", "299 zł", "Jednorazowa pomoc przy ataku opiniami."],
-          ].map(([name, price, description]) => (
-            <div className="rounded-sm bg-[#18211c] p-5 text-[#f6f3ec]" key={name}>
-              <p className="text-sm font-semibold text-[#c8f560]">{name}</p>
-              <p className="mt-3 text-3xl font-bold">{price}</p>
-              <p className="mt-3 text-sm leading-6 text-[#d7ded4]">
-                {description}
-              </p>
+      <section className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:px-10">
+        <div>
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#657068]">
+            co dostajesz
+          </p>
+          <h2 className="mt-3 text-4xl font-bold leading-tight">
+            Audyt opinii, ktory da sie wdrozyc bez nowego systemu.
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-[#526157]">
+            W pilotazu nie podlaczamy jeszcze API Google. Sprawdzamy opinie
+            wedlug checklisty i odsylamy konkret: co odpowiedziec, co obserwowac
+            i ktore wpisy warto zweryfikowac lub zglosic.
+          </p>
+        </div>
+        <div className="grid gap-3">
+          {auditItems.map((item, index) => (
+            <div
+              className="flex gap-4 border border-[#17211c]/10 bg-[#fffdf7] p-5"
+              key={item}
+            >
+              <span className="grid size-8 shrink-0 place-items-center rounded-sm bg-[#17211c] font-mono text-sm font-semibold text-[#d6f36a]">
+                {index + 1}
+              </span>
+              <p className="pt-1 text-base font-semibold leading-7">{item}</p>
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="bg-[#17211c] text-[#f7f2e8]">
+        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-10">
+          <div>
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#d6f36a]">
+              pilotaz
+            </p>
+            <h2 className="mt-3 text-4xl font-bold leading-tight">
+              Sprawdzamy, czy taki audyt ma sens dla restauracji.
+            </h2>
+            <p className="mt-5 text-base leading-7 text-[#dbe4d8]">
+              To wczesny pilotaz. Chcemy poznac realne problemy restauratorow i
+              sprawdzic, czy analiza opinii oraz gotowy plan reakcji sa dla nich
+              pomocne.
+            </p>
+          </div>
+          <div className="grid gap-3 md:grid-cols-3">
+            {outreachSteps.map((step, index) => (
+              <article className="border border-[#f7f2e8]/15 p-5" key={step}>
+                <p className="font-mono text-sm font-semibold text-[#d6f36a]">
+                  0{index + 1}
+                </p>
+                <p className="mt-4 text-base font-semibold leading-7">{step}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-10"
+        id="pilot"
+      >
+        <div>
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#657068]">
+            formularz
+          </p>
+          <h2 className="mt-3 text-4xl font-bold leading-tight">
+            Chcesz audyt opinii dla swojej restauracji?
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-[#526157]">
+            Wyslij link do profilu Google. Odpowiem z informacja, czy widac opinie
+            wymagajace reakcji i czy pilotaz ma sens dla Twojego lokalu.
+          </p>
+        </div>
+        <LeadForm />
       </section>
     </main>
   );
