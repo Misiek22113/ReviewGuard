@@ -114,7 +114,7 @@ To wczesny pilotaz. Chcemy poznac realne problemy restauratorow i sprawdzic, czy
 
 Kroki:
 01. Zostawiasz link do profilu Google.
-02. Sprawdzam opinie wedlug checklisty i przygotowuje mini-audyt.
+02. Sprawdzamy opinie wedlug checklisty i przygotowujemy mini-audyt.
 03. Dostajesz plan reakcji, propozycje odpowiedzi i nastepne kroki.
 
 
@@ -127,7 +127,7 @@ Naglowek:
 Chcesz audyt opinii dla swojej restauracji?
 
 Opis:
-Wyslij link do profilu Google. Odpowiem z informacja, czy widac opinie wymagajace reakcji i czy pilotaz ma sens dla Twojego lokalu.
+Wyslij link do profilu Google. Odpowiemy z informacja, czy widac opinie wymagajace reakcji i czy pilotaz ma sens dla Twojego lokalu.
 
 Pole 1:
 Imie
@@ -153,13 +153,13 @@ Przycisk:
 Wyslij prosbe o audyt
 
 Tekst przycisku podczas wysylania:
-Wysylam zgloszenie...
+Wysylamy zgloszenie...
 
 Informacja pod formularzem:
-Po wyslaniu dane trafia bezposrednio do ReviewGuard. Odpowiem na podany adres e-mail.
+Po wyslaniu dane trafia bezposrednio do ReviewGuard. Odpowiemy na podany adres e-mail.
 
 Komunikat po poprawnym wyslaniu:
-Zgloszenie zostalo wyslane. Dziekuje — odezwe sie na podany adres.
+Zgloszenie zostalo wyslane. Dziekujemy — odezwiemy sie na podany adres.
 
 Komunikat bledu:
 Nie udalo sie wyslac zgloszenia. Sprobuj ponownie za chwile.

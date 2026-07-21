@@ -103,17 +103,17 @@ export function LeadForm() {
         disabled={status === "submitting"}
         type="submit"
       >
-        {status === "submitting" ? "Wysylam zgloszenie..." : "Wyslij prosbe o audyt"}
+        {status === "submitting" ? "Wysylamy zgloszenie..." : "Wyslij prosbe o audyt"}
       </button>
 
       <p className="mt-4 text-sm leading-6 text-[#657068]">
-        Po wyslaniu dane trafia bezposrednio do ReviewGuard. Odpowiem na podany
+        Po wyslaniu dane trafia bezposrednio do ReviewGuard. Odpowiemy na podany
         adres e-mail.
       </p>
       <div aria-live="polite">
         {status === "success" ? (
           <p className="mt-3 text-sm font-semibold text-[#17211c]">
-            Zgloszenie zostalo wyslane. Dziekuje — odezwe sie na podany adres.
+            Zgloszenie zostalo wyslane. Dziekujemy — odezwiemy sie na podany adres.
           </p>
         ) : null}
         {status === "error" ? (

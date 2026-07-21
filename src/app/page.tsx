@@ -27,7 +27,7 @@ const sampleFindings = [
 
 const outreachSteps = [
   "Zostawiasz link do profilu Google.",
-  "Sprawdzam opinie wedlug checklisty i przygotowuje mini-audyt.",
+  "Sprawdzamy opinie wedlug checklisty i przygotowujemy mini-audyt.",
   "Dostajesz plan reakcji, propozycje odpowiedzi i nastepne kroki.",
 ];
 
@@ -216,8 +216,8 @@ export default function Home() {
             Chcesz audyt opinii dla swojej restauracji?
           </h2>
           <p className="mt-5 text-lg leading-8 text-[#526157]">
-            Wyslij link do profilu Google. Odpowiem z informacja, czy widac opinie
-            wymagajace reakcji i czy pilotaz ma sens dla Twojego lokalu.
+            Wyslij link do profilu Google. Odpowiemy z informacja, czy widac
+            opinie wymagajace reakcji i czy pilotaz ma sens dla Twojego lokalu.
           </p>
         </div>
         <LeadForm />
