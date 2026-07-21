@@ -2,44 +2,35 @@
 
 import { FormEvent, useState } from "react";
 
-const CONTACT_EMAIL = "REVIEWGUARD_CONTACT_EMAIL";
+type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export function LeadForm() {
-  const [status, setStatus] = useState<"idle" | "ready">("idle");
+  const [status, setStatus] = useState<FormStatus>("idle");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
-    const name = String(formData.get("name") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const restaurant = String(formData.get("restaurant") || "").trim();
-    const googleUrl = String(formData.get("googleUrl") || "").trim();
-    const problem = String(formData.get("problem") || "").trim();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
-    const subject = `Pilotaz ReviewGuard - ${restaurant || "restauracja"}`;
-    const body = [
-      "Czesc,",
-      "",
-      "chce sprawdzic, czy ReviewGuard ma sens dla mojej restauracji.",
-      "",
-      `Imie: ${name}`,
-      `Email: ${email}`,
-      `Restauracja: ${restaurant}`,
-      `Link do profilu Google: ${googleUrl}`,
-      "",
-      "Najwiekszy problem z opiniami:",
-      problem,
-      "",
-      "Interesuje mnie udzial w pilotazu audytu opinii Google.",
-    ].join("\n");
+    setStatus("submitting");
 
-    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      });
 
-    setStatus("ready");
-    window.location.href = mailtoUrl;
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      form.reset();
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -47,6 +38,11 @@ export function LeadForm() {
       className="border border-[#17211c] bg-[#fffdf7] p-5 shadow-[10px_10px_0_#17211c]"
       onSubmit={handleSubmit}
     >
+      <label className="absolute -left-[9999px]" aria-hidden="true">
+        Strona internetowa
+        <input autoComplete="off" name="website" tabIndex={-1} type="text" />
+      </label>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-semibold">
           Imie
@@ -103,22 +99,29 @@ export function LeadForm() {
       </label>
 
       <button
-        className="mt-5 w-full rounded-sm bg-[#17211c] px-6 py-4 text-sm font-bold text-[#f7f2e8] transition hover:bg-[#2e3b34]"
+        className="mt-5 w-full rounded-sm bg-[#17211c] px-6 py-4 text-sm font-bold text-[#f7f2e8] transition hover:bg-[#2e3b34] disabled:cursor-wait disabled:opacity-60"
+        disabled={status === "submitting"}
         type="submit"
       >
-        Przygotuj maila z prosba o audyt
+        {status === "submitting" ? "Wysylam zgloszenie..." : "Wyslij prosbe o audyt"}
       </button>
 
       <p className="mt-4 text-sm leading-6 text-[#657068]">
-        Formularz otworzy Twoj program pocztowy z gotowa wiadomoscia. Na tym
-        etapie dane nie sa zapisywane w aplikacji.
+        Po wyslaniu dane trafia bezposrednio do ReviewGuard. Odpowiem na podany
+        adres e-mail.
       </p>
-      {status === "ready" ? (
-        <p className="mt-3 text-sm font-semibold text-[#17211c]">
-          Jesli program pocztowy sie nie otworzyl, sprawdz konfiguracje mailto w
-          przegladarce.
-        </p>
-      ) : null}
+      <div aria-live="polite">
+        {status === "success" ? (
+          <p className="mt-3 text-sm font-semibold text-[#17211c]">
+            Zgloszenie zostalo wyslane. Dziekuje — odezwe sie na podany adres.
+          </p>
+        ) : null}
+        {status === "error" ? (
+          <p className="mt-3 text-sm font-semibold text-[#9f2d20]">
+            Nie udalo sie wyslac zgloszenia. Sprobuj ponownie za chwile.
+          </p>
+        ) : null}
+      </div>
     </form>
   );
 }

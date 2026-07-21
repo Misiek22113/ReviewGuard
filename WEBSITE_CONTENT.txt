@@ -150,13 +150,19 @@ Najwiekszy problem z opiniami
 Placeholder: np. Mamy kilka opinii 1-2 gwiazdki bez odpowiedzi albo podejrzany wpis, ktory chcemy zweryfikowac.
 
 Przycisk:
-Przygotuj maila z prosba o audyt
+Wyslij prosbe o audyt
+
+Tekst przycisku podczas wysylania:
+Wysylam zgloszenie...
 
 Informacja pod formularzem:
-Formularz otworzy Twoj program pocztowy z gotowa wiadomoscia. Na tym etapie dane nie sa zapisywane w aplikacji.
+Po wyslaniu dane trafia bezposrednio do ReviewGuard. Odpowiem na podany adres e-mail.
 
-Komunikat po kliknieciu:
-Jesli program pocztowy sie nie otworzyl, sprawdz konfiguracje mailto w przegladarce.
+Komunikat po poprawnym wyslaniu:
+Zgloszenie zostalo wyslane. Dziekuje — odezwe sie na podany adres.
+
+Komunikat bledu:
+Nie udalo sie wyslac zgloszenia. Sprobuj ponownie za chwile.
 
 
 === TRESC GENEROWANEGO MAILA ===
@@ -165,9 +171,7 @@ Temat:
 Pilotaz ReviewGuard - [nazwa restauracji]
 
 Tresc:
-Czesc,
-
-chce sprawdzic, czy ReviewGuard ma sens dla mojej restauracji.
+Nowe zgloszenie do pilotazu ReviewGuard
 
 Imie: [imie]
 Email: [email]
@@ -176,5 +180,3 @@ Link do profilu Google: [link]
 
 Najwiekszy problem z opiniami:
 [opis problemu]
-
-Interesuje mnie udzial w pilotazu audytu opinii Google.
