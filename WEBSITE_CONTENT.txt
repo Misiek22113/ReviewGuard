@@ -161,6 +161,19 @@ Po wyslaniu dane trafia bezposrednio do ReviewGuard. Odpowiemy na podany adres e
 Komunikat po poprawnym wyslaniu:
 Zgloszenie zostalo wyslane. Dziekujemy — odezwiemy sie na podany adres.
 
+Zaproszenie do polecenia:
+przekaz dalej
+Znasz restauracje, ktorej przydaloby sie uporzadkowanie opinii Google? Przeslij jej link do ReviewGuard.
+
+Przycisk udostepniania:
+Przekaz ReviewGuard dalej
+
+Komunikat po udostepnieniu:
+Dziekujemy za polecenie
+
+Komunikat bledu udostepniania:
+Nie udalo sie udostepnic linku. Skopiuj go z paska przegladarki.
+
 Komunikat bledu:
 Nie udalo sie wyslac zgloszenia. Sprobuj ponownie za chwile.
 

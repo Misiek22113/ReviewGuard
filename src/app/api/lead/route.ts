@@ -6,6 +6,7 @@ type LeadPayload = {
   restaurant?: unknown;
   googleUrl?: unknown;
   problem?: unknown;
+  locale?: unknown;
   website?: unknown;
 };
 
@@ -52,6 +53,7 @@ export async function POST(request: Request) {
   const restaurant = readText(payload.restaurant, 160);
   const googleUrl = readText(payload.googleUrl, 2_000);
   const problem = readText(payload.problem, 3_000);
+  const locale = payload.locale === "en" ? "en" : "pl";
 
   if (
     !name ||
@@ -83,14 +85,15 @@ export async function POST(request: Request) {
 
   const resend = new Resend(apiKey);
   const message = [
-    "Nowe zgloszenie do pilotazu ReviewGuard",
+    "New ReviewGuard pilot request",
     "",
-    `Imie: ${name}`,
+    `Language: ${locale.toUpperCase()}`,
+    `Name: ${name}`,
     `Email: ${email}`,
-    `Restauracja: ${restaurant}`,
-    `Link do profilu Google: ${googleUrl}`,
+    `Restaurant: ${restaurant}`,
+    `Google Business Profile: ${googleUrl}`,
     "",
-    "Najwiekszy problem z opiniami:",
+    "Biggest review challenge:",
     problem,
   ].join("\n");
 
@@ -99,7 +102,7 @@ export async function POST(request: Request) {
       from: fromEmail,
       to: notificationEmail,
       replyTo: email,
-      subject: `Pilotaz ReviewGuard - ${restaurant}`,
+      subject: `ReviewGuard pilot (${locale.toUpperCase()}) - ${restaurant}`,
       text: message,
     });
 
