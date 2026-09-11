@@ -15,7 +15,11 @@ export type DemoReview = {
   review: LocalizedText;
   detail: LocalizedText;
   replies: Record<ReplyStyle, LocalizedText>;
-  managerContext?: LocalizedText;
+  alternateReplies: Record<ReplyStyle, LocalizedText>;
+  managerContext?: {
+    example: LocalizedText;
+    replies: Record<ReplyStyle, Record<DemoLocale, readonly [string, string]>>;
+  };
 };
 
 export const demoReviews: DemoReview[] = [
@@ -44,6 +48,20 @@ export const demoReviews: DemoReview[] = [
         en: "Great to hear you enjoyed it and everything was ready on time! See you for the next pizza. 🍕",
       },
     },
+    alternateReplies: {
+      warm: {
+        pl: "Dziękujemy za miłe słowa! Szczególnie cieszy nas smak pizzy i szybki odbiór. Będzie nam bardzo miło gościć Państwa ponownie.",
+        en: "Thank you for the lovely review. We are especially pleased that the pizza tasted great and collection was quick. We hope to welcome you again soon.",
+      },
+      concise: {
+        pl: "Dziękujemy za opinię. Cieszymy się, że pizza smakowała, a odbiór przebiegł szybko.",
+        en: "Thank you for your review. We are glad the pizza was delicious and collection was quick.",
+      },
+      casual: {
+        pl: "Smaczna pizza i szybki odbiór — dokładnie tak ma być. Dzięki i do następnego! 🍕",
+        en: "Tasty pizza and quick collection — exactly how it should be. Thanks and see you next time! 🍕",
+      },
+    },
   },
   {
     id: "P2",
@@ -68,6 +86,20 @@ export const demoReviews: DemoReview[] = [
       casual: {
         pl: "Super, że pizza smakowała, a kącik umilił dzieciom oczekiwanie. Zapraszamy całą ekipę ponownie!",
         en: "Great to hear the pizza hit the spot and the play corner kept the little ones happy. Bring the whole crew back soon!",
+      },
+    },
+    alternateReplies: {
+      warm: {
+        pl: "Bardzo dziękujemy! Cieszy nas, że świeże dodatki, sprawna obsługa i kącik dla dzieci złożyły się na udaną wizytę.",
+        en: "Thank you very much. We are delighted that the fresh toppings, quick service and children's play area made for a good visit.",
+      },
+      concise: {
+        pl: "Dziękujemy! Miło nam, że docenili Państwo pizzę, obsługę i kącik dla dzieci.",
+        en: "Thank you. We are glad you appreciated the pizza, service and children's play area.",
+      },
+      casual: {
+        pl: "Pizza dla dorosłych, kącik dla dzieci i sprawna obsługa — cieszymy się, że wszystko zagrało!",
+        en: "Pizza for the adults, a play corner for the children and quick service — great to hear it all worked!",
       },
     },
   },
@@ -96,6 +128,20 @@ export const demoReviews: DemoReview[] = [
         en: "Coming back is the best compliment we could get! Thanks for trusting us — see you at the next pizza. 🍕",
       },
     },
+    alternateReplies: {
+      warm: {
+        pl: "Dziękujemy za każdą kolejną wizytę. Ogromnie cieszą nas dobre słowa o pizzy, zespole i miejscu dla dzieci.",
+        en: "Thank you for every return visit. Your kind words about the pizza, our team and the children's area mean a great deal.",
+      },
+      concise: {
+        pl: "Dziękujemy za zaufanie i regularne wizyty. Do zobaczenia ponownie!",
+        en: "Thank you for your trust and regular visits. We hope to see you again soon.",
+      },
+      casual: {
+        pl: "Uwielbiamy takich stałych Gości — dzięki, że do nas wracacie! 🍕",
+        en: "We love welcoming regular guests like you — thanks for coming back! 🍕",
+      },
+    },
   },
   {
     id: "P4",
@@ -120,6 +166,20 @@ export const demoReviews: DemoReview[] = [
       casual: {
         pl: "Rodzinny obiad i dobra pizza — brzmi jak udany zestaw! Dzięki i do zobaczenia. 🍕",
         en: "Family lunch and good pizza — that sounds like a winning combination! Thanks and see you soon. 🍕",
+      },
+    },
+    alternateReplies: {
+      warm: {
+        pl: "Dziękujemy za wizytę. Bardzo nam miło, że pizza, obsługa i rodzinna atmosfera zostały dobrze odebrane.",
+        en: "Thank you for visiting. We are very pleased that you enjoyed the pizza, service and family atmosphere.",
+      },
+      concise: {
+        pl: "Dziękujemy za miłą opinię o pizzy i obsłudze. Zapraszamy ponownie.",
+        en: "Thank you for the kind words about our pizza and service. We hope to see you again.",
+      },
+      casual: {
+        pl: "Dobra pizza w rodzinnym gronie — super, że mogliśmy być częścią tego obiadu!",
+        en: "Good pizza with the family — lovely to have been part of your lunch!",
       },
     },
   },
@@ -148,6 +208,20 @@ export const demoReviews: DemoReview[] = [
         en: "This time we clearly missed the standard you know us for. Sorry about the cold pizza — we hope the next order feels like us again.",
       },
     },
+    alternateReplies: {
+      warm: {
+        pl: "Dziękujemy za szczery sygnał od stałych Gości. Przepraszamy za zimną dostawę i sprawdzimy, na którym etapie zamówienie straciło temperaturę.",
+        en: "Thank you for the honest feedback from returning guests. We are sorry about the cold delivery and will review where the order lost temperature.",
+      },
+      concise: {
+        pl: "Przepraszamy za zimną pizzę. Sprawdzimy przebieg tej dostawy z zespołem.",
+        en: "We are sorry the pizza arrived cold. We will review this delivery with the team.",
+      },
+      casual: {
+        pl: "Stałych Gości nie powinniśmy tak zawodzić. Przepraszamy za zimną dostawę — sprawdzimy, co poszło nie tak.",
+        en: "We should not let regular guests down like this. Sorry about the cold delivery — we will check what went wrong.",
+      },
+    },
   },
   {
     id: "M2",
@@ -172,6 +246,20 @@ export const demoReviews: DemoReview[] = [
       casual: {
         pl: "Dzięki za bardzo konkretne wskazówki. Świeżość zapisujemy na plus, a sos i ciasto bierzemy pod lupę przed kolejną wizytą.",
         en: "Thanks for the really useful detail. Fresh ingredients go in the win column; we will take a closer look at the sauce and dough before your next visit.",
+      },
+    },
+    alternateReplies: {
+      warm: {
+        pl: "Dziękujemy za wyważoną opinię. Doceniamy pochwałę świeżych składników, a uwagi o sosie i cieście przekażemy zespołowi.",
+        en: "Thank you for the balanced review. We appreciate the praise for our fresh ingredients and will share the comments about the sauce and dough with the team.",
+      },
+      concise: {
+        pl: "Dziękujemy za konkretne uwagi o sosie i cieście. Przyjrzymy się im uważnie.",
+        en: "Thank you for the specific comments about the sauce and dough. We will look at them carefully.",
+      },
+      casual: {
+        pl: "Dzięki za konkrety — świeże składniki cieszą, a sos i ciasto sprawdzimy jeszcze raz.",
+        en: "Thanks for the specifics — the fresh ingredients are good to hear, and we will revisit the sauce and dough.",
       },
     },
   },
@@ -200,6 +288,20 @@ export const demoReviews: DemoReview[] = [
         en: "The sauces saved the day, but the pizza should have delivered too. Thanks for being honest — we want to do much better next time.",
       },
     },
+    alternateReplies: {
+      warm: {
+        pl: "Dziękujemy za uczciwą ocenę. Cieszymy się, że sosy smakowały, ale rozumiemy rozczarowanie pizzą i potraktujemy ten sygnał poważnie.",
+        en: "Thank you for the honest assessment. We are glad you enjoyed the sauces, but understand the disappointment with the pizza and will take it seriously.",
+      },
+      concise: {
+        pl: "Dziękujemy za szczerość. Przekażemy zespołowi zarówno pochwałę sosów, jak i uwagę o pizzy.",
+        en: "Thank you for your honesty. We will share both the praise for the sauces and the concern about the pizza with the team.",
+      },
+      casual: {
+        pl: "Miło, że sosy trafiły w punkt, ale pizza powinna była dorównać. Dzięki za szczery sygnał.",
+        en: "Great that the sauces hit the mark, but the pizza should have matched them. Thanks for the honest feedback.",
+      },
+    },
   },
   {
     id: "N1",
@@ -224,6 +326,20 @@ export const demoReviews: DemoReview[] = [
       casual: {
         pl: "Goście nie powinni walczyć o kartę — przepraszamy za taki początek wizyty. Porozmawiamy z zespołem, żeby to się nie powtórzyło.",
         en: "Guests should never have to chase down a menu — sorry for that start to your visit. We will speak with the team so it does not happen again.",
+      },
+    },
+    alternateReplies: {
+      warm: {
+        pl: "Przepraszamy za brak powitania i zbyt długie oczekiwanie na obsługę. Dziękujemy za sygnał — omówimy tę sytuację z zespołem.",
+        en: "We are sorry you were not welcomed and waited too long for service. Thank you for raising it — we will discuss this with the team.",
+      },
+      concise: {
+        pl: "Przepraszamy za długie oczekiwanie na kartę. Sprawdzimy tę sytuację z zespołem.",
+        en: "We are sorry you waited so long for a menu. We will review this with the team.",
+      },
+      casual: {
+        pl: "Tak nie powinno zaczynać się spotkanie przy pizzy. Przepraszamy za brak reakcji i zajmiemy się tym z zespołem.",
+        en: "That is not how a pizza visit should begin. Sorry nobody responded — we will address it with the team.",
       },
     },
   },
@@ -252,6 +368,20 @@ export const demoReviews: DemoReview[] = [
         en: "Two things went wrong here: a cool pizza and the wrong dough. We are sorry and will check with the team where the order went off track.",
       },
     },
+    alternateReplies: {
+      warm: {
+        pl: "Bardzo przepraszamy, że pizza była chłodna i przygotowana na innym cieście. Dziękujemy również za miłe słowo o osobie przy kasie.",
+        en: "We are very sorry the pizza was cool and made with the wrong dough. We also appreciate your kind words about our colleague at the till.",
+      },
+      concise: {
+        pl: "Przepraszamy za chłodną pizzę i niewłaściwe ciasto. Zweryfikujemy realizację zamówienia.",
+        en: "We are sorry about the cool pizza and incorrect dough. We will review how the order was prepared.",
+      },
+      casual: {
+        pl: "Chłodna pizza na innym cieście to podwójna wpadka. Przepraszamy — sprawdzimy realizację tego zamówienia.",
+        en: "A cool pizza on the wrong dough is a double miss. Sorry — we will review how this order was handled.",
+      },
+    },
   },
   {
     id: "N3",
@@ -278,6 +408,20 @@ export const demoReviews: DemoReview[] = [
         en: "A special request should make it onto the pizza exactly as given. Sorry for the mix-ups — we want to look into this order.",
       },
     },
+    alternateReplies: {
+      warm: {
+        pl: "Przepraszamy, że zamówienie nie uwzględniło przekazanej prośby. Chcemy sprawdzić szczegóły i wyjaśnić, gdzie doszło do pomyłki.",
+        en: "We are sorry the order did not follow your stated request. We want to review the details and understand where the mistake happened.",
+      },
+      concise: {
+        pl: "Przepraszamy za niezgodność składników z zamówieniem. Sprawdzimy ten przypadek.",
+        en: "We are sorry the ingredients did not match the order. We will review this case.",
+      },
+      casual: {
+        pl: "Wyraźna prośba nie powinna zniknąć po drodze. Przepraszamy za pomyłki i sprawdzimy zamówienie.",
+        en: "A clear request should not get lost along the way. Sorry about the mistakes — we will review the order.",
+      },
+    },
   },
   {
     id: "C1",
@@ -290,10 +434,6 @@ export const demoReviews: DemoReview[] = [
       en: "We usually enjoy the pizza, but our last delivery was cold and late. We also had an unpleasant service issue before, and trying to resolve it led nowhere.",
     },
     detail: { pl: "Kilka połączonych zdarzeń", en: "Several linked incidents" },
-    managerContext: {
-      pl: "Potwierdzono opóźnienie dostawy. Wcześniejsza wiadomość nie trafiła do osoby prowadzącej zmianę. Manager zaproponuje ponowne przygotowanie zamówienia.",
-      en: "The delivery delay was confirmed. The earlier message did not reach the shift manager. The manager will offer to remake the order.",
-    },
     replies: {
       warm: {
         pl: "Dziękujemy za ponowny sygnał i przepraszamy za opóźnioną, zimną dostawę oraz brak skutecznego wyjaśnienia. Chcemy najpierw sprawdzić historię kontaktu, aby rzetelnie odnieść się do całej sprawy.",
@@ -306,6 +446,58 @@ export const demoReviews: DemoReview[] = [
       casual: {
         pl: "To nie wygląda na pojedynczą wpadkę, dlatego nie chcemy odpowiadać ogólnikiem. Przepraszamy i najpierw sprawdzimy całą historię kontaktu.",
         en: "This does not sound like a single slip-up, so we do not want to reply with a stock phrase. We are sorry and will review the full contact history first.",
+      },
+    },
+    alternateReplies: {
+      warm: {
+        pl: "Bardzo nam przykro z powodu zimnej i spóźnionej dostawy oraz braku skutecznego rozwiązania wcześniejszej sprawy. Zweryfikujemy historię kontaktu przed udzieleniem szczegółowej odpowiedzi.",
+        en: "We are very sorry about the cold, late delivery and the lack of resolution to the earlier issue. We will review the contact history before responding in detail.",
+      },
+      concise: {
+        pl: "Przepraszamy za dostawę i brak rozwiązania sprawy. Najpierw sprawdzimy historię kontaktu.",
+        en: "We are sorry about the delivery and unresolved issue. We will review the contact history first.",
+      },
+      casual: {
+        pl: "Tu trzeba sprawdzić więcej niż jedną rzecz. Przepraszamy — wrócimy do całej historii kontaktu, zanim odpowiemy szczegółowo.",
+        en: "There is more than one thing to check here. Sorry — we will review the full contact history before responding in detail.",
+      },
+    },
+    managerContext: {
+      example: {
+        pl: "Potwierdzono opóźnienie dostawy. Wcześniejsza wiadomość nie trafiła do osoby prowadzącej zmianę. Manager zaproponuje ponowne przygotowanie zamówienia.",
+        en: "The delivery delay was confirmed. The earlier message did not reach the shift manager. The manager will offer to remake the order.",
+      },
+      replies: {
+        warm: {
+          pl: [
+            "Dziękujemy za ponowny sygnał. Potwierdziliśmy opóźnienie, a wcześniejsza wiadomość nie dotarła do osoby prowadzącej zmianę. Manager skontaktuje się z Państwem i zaproponuje ponowne przygotowanie zamówienia.",
+            "Przepraszamy za opóźnioną i zimną dostawę oraz brak właściwej reakcji. Wiemy już, że wiadomość nie trafiła do managera zmiany; skontaktujemy się, aby zaproponować ponowne przygotowanie zamówienia.",
+          ],
+          en: [
+            "Thank you for raising this again. We confirmed the delay, and the earlier message did not reach the shift manager. The manager will contact you and offer to remake the order.",
+            "We are sorry about the late, cold delivery and the lack of a proper response. We now know the message did not reach the shift manager; we will contact you and offer to remake the order.",
+          ],
+        },
+        concise: {
+          pl: [
+            "Potwierdziliśmy opóźnienie i błąd w przekazaniu wiadomości. Manager skontaktuje się w sprawie ponownego przygotowania zamówienia.",
+            "Przepraszamy za opóźnienie i brak reakcji. Manager otrzymał sprawę i zaproponuje ponowne przygotowanie zamówienia.",
+          ],
+          en: [
+            "We confirmed the delay and a failure to pass on the message. The manager will contact you about remaking the order.",
+            "We are sorry about the delay and lack of response. The manager now has the case and will offer to remake the order.",
+          ],
+        },
+        casual: {
+          pl: [
+            "Sprawdziliśmy, co zawiodło: dostawa się spóźniła, a wiadomość nie dotarła do managera zmiany. Skontaktujemy się i zaproponujemy przygotowanie zamówienia ponownie.",
+            "To nie powinno było tak wyglądać. Potwierdziliśmy opóźnienie i problem z przekazaniem wiadomości; manager zaproponuje ponowne przygotowanie zamówienia.",
+          ],
+          en: [
+            "We checked what went wrong: the delivery was late and the message did not reach the shift manager. We will contact you and offer to remake the order.",
+            "This should not have happened. We confirmed the delay and the missed message; the manager will offer to remake the order.",
+          ],
+        },
       },
     },
   },

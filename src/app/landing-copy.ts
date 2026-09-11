@@ -12,12 +12,12 @@ export const landingCopy = {
     heroTitle: "Odpowiadaj na opinie Google bez pisania każdej odpowiedzi od zera.",
     heroDescription:
       "ReviewGuard porządkuje kolejkę opinii i przygotowuje odpowiedzi w stylu Twojego lokalu. Ty sprawdzasz treść, poprawiasz ją, jeśli chcesz, i zatwierdzasz.",
-    primaryCta: "Wypróbuj interaktywne demo",
-    secondaryCta: "Zgłoś lokal do pilotażu",
+    primaryCta: "Sprawdź moją wizytówkę",
+    secondaryCta: "Zapisz się na pilotaż",
     priceLabel: "Pilotaż:",
     price: "80 zł · 30 dni · 1 lokal · do 20 opinii.",
     heroNote:
-      "Na start działamy z Google i zawsze zostawiamy ostateczną decyzję człowiekowi. Płatność dopiero po potwierdzeniu zakresu.",
+      "Na start sprawdzamy wizytówkę Google według checklisty i zawsze zostawiamy ostateczną decyzję człowiekowi. Płatność dopiero po potwierdzeniu zakresu.",
     sampleLabel: "podgląd panelu",
     sampleAnonymized: "dane zanonimizowane",
     sampleTitle: "Opinia wchodzi. Odpowiedź czeka.",
@@ -88,12 +88,11 @@ export const landingCopy = {
       problem: "Jak dziś zajmujecie się opiniami?",
       problemPlaceholder:
         "np. Odpowiada właściciel raz w tygodniu; mamy około 25 opinii bez odpowiedzi.",
-      submit: "Zgłoś lokal do pilotażu",
-      submitting: "Wysyłamy zgłoszenie...",
+      submit: "Przygotuj wiadomość zgłoszeniową",
       privacy:
-        "Po wysłaniu dane trafią bezpośrednio do ReviewGuard. Odpowiemy na podany adres e-mail.",
+        "Formularz otworzy gotową wiadomość w Twoim programie pocztowym. Nic nie zostanie wysłane bez Twojego potwierdzenia.",
       success:
-        "Zgłoszenie zostało wysłane. Dziękujemy — odezwiemy się na podany adres.",
+        "Gotowa wiadomość została otwarta w programie pocztowym. Sprawdź ją i wyślij, kiedy będziesz gotowy.",
       shareLabel: "przekaz dalej",
       shareDescription:
         "Znasz restaurację, której przydałoby się uporządkowanie opinii Google? Prześlij jej link do ReviewGuard.",
@@ -104,6 +103,15 @@ export const landingCopy = {
       shareError:
         "Nie udało się udostępnić linku. Skopiuj go z paska przeglądarki.",
       error: "Nie udało się wysłać zgłoszenia. Spróbuj ponownie za chwilę.",
+      mailto: {
+        subjectPrefix: "ReviewGuard — zgłoszenie pilotażu",
+        greeting: "Dzień dobry,",
+        intro: "chcę zgłosić lokal do pilotażu ReviewGuard.",
+        locationLabel: "Lokal",
+        contactLabel: "Email kontaktowy",
+        profileLabel: "Profil Google",
+        workflowLabel: "Obecny sposób obsługi opinii",
+      },
     },
   },
   en: {
@@ -118,13 +126,13 @@ export const landingCopy = {
     audience: "for restaurants and hospitality businesses",
     heroTitle: "Reply to Google reviews without writing every response from scratch.",
     heroDescription:
-      "ReviewGuard organises your review queue and prepares replies in your venue's voice. You review the draft, edit it if needed, and approve the final response.",
-    primaryCta: "Try the interactive demo",
+      "ReviewGuard organises your review queue and prepares replies in your location's voice. You review the draft, edit it if needed, and approve the final response.",
+    primaryCta: "Check my Google Business Profile",
     secondaryCta: "Join the pilot",
     priceLabel: "Pilot pricing:",
     price: "Set separately for the English-speaking market.",
     heroNote:
-      "We are starting with Google and always keep a person in control of the final response. Pricing is confirmed separately for each market.",
+      "We start by checking your Google Business Profile against a practical checklist and always keep a person in control of the final response. Pricing is confirmed separately for each market.",
     sampleLabel: "product preview",
     sampleAnonymized: "details anonymized",
     sampleTitle: "A review arrives. A reply is ready.",
@@ -168,20 +176,20 @@ export const landingCopy = {
     featureItems: [
       "A queue of new and unanswered reviews that need attention",
       "Prepared replies in your chosen tone and length",
-      "A place for confirmed context from the venue manager",
+      "A place for confirmed context from the location manager",
       "Editing, approval and copy controls before publishing",
     ],
     processLabel: "how it works",
     processTitle: "From your Google profile to an approved response.",
     processDescription:
-      "At first, we prepare each venue's review queue and drafts through a hands-on assisted process. This lets us learn how operators really work before a full Google integration.",
+      "At first, we prepare each location's review queue and drafts through a hands-on assisted process. This lets us learn how operators really work before a full Google integration.",
     outreachSteps: [
       "Send your Google Business Profile link and choose the reviews for the pilot.",
-      "We prepare the queue and draft replies in your venue's voice.",
+      "We prepare the queue and draft replies in your location's voice.",
       "You review, edit and approve each reply without starting from a blank page.",
     ],
     formLabel: "pilot",
-    formTitle: "Want replies like these for your venue?",
+    formTitle: "Want replies like these for your location?",
     formDescription:
       "Send your Google Business Profile link. We will check the volume of new and unanswered reviews, then confirm pilot scope, pricing and availability.",
     form: {
@@ -195,12 +203,11 @@ export const landingCopy = {
       problem: "How do you handle reviews today?",
       problemPlaceholder:
         "e.g. The owner replies once a week and we have around 25 unanswered reviews.",
-      submit: "Join the pilot",
-      submitting: "Sending your request...",
+      submit: "Prepare enquiry email",
       privacy:
-        "Your details go directly to ReviewGuard. We will reply to the email address you provide.",
+        "The form opens a prepared message in your email app. Nothing is sent until you confirm it.",
       success:
-        "Your request has been sent. Thank you — we will be in touch by email.",
+        "The prepared message is open in your email app. Review it and send it when you are ready.",
       shareLabel: "share ReviewGuard",
       shareDescription:
         "Know a restaurant that could use a clearer approach to Google reviews? Send them ReviewGuard.",
@@ -211,6 +218,15 @@ export const landingCopy = {
       shareError:
         "We could not share the link. Copy it from your browser's address bar instead.",
       error: "We could not send your request. Please try again in a moment.",
+      mailto: {
+        subjectPrefix: "ReviewGuard pilot enquiry",
+        greeting: "Hello,",
+        intro: "I would like to enquire about the ReviewGuard pilot.",
+        locationLabel: "Location",
+        contactLabel: "Contact email",
+        profileLabel: "Google Business Profile",
+        workflowLabel: "Current review workflow",
+      },
     },
   },
 } as const;

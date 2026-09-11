@@ -11,11 +11,17 @@ import {
   type ReviewCategory,
   type ReviewStatus,
 } from "./demo-data";
+import {
+  invalidateApproval,
+  matchesReviewFilter,
+  nextReplyStatus,
+  preparedReply,
+  sessionSummary,
+  type ReviewFilter,
+} from "./demo-session";
 import styles from "./prototype.module.css";
 
 // The validated review workspace: control desk on desktop, focus mode on mobile.
-
-type Filter = "all" | ReviewCategory | ReviewStatus;
 
 type SessionState = {
   selectedId: string;
@@ -27,7 +33,6 @@ type SessionState = {
   managerNotes: Record<DemoLocale, Record<string, string>>;
   viewed: string[];
   edited: string[];
-  approved: string[];
   copied: string[];
 };
 
@@ -48,6 +53,7 @@ const ui = {
     approved: "Zatwierdzona",
     noViolations: "Możliwe naruszenia: 0",
     noViolationsHelp: "Krytyczna opinia nie jest automatycznie naruszeniem zasad Google.",
+    emptyFilter: "Brak opinii w tym filtrze.",
     guest: "Gość Google",
     source: "Adaptacja publicznej opinii · dane zanonimizowane",
     reply: "Propozycja odpowiedzi",
@@ -109,6 +115,7 @@ const ui = {
     approved: "Approved",
     noViolations: "Possible violations: 0",
     noViolationsHelp: "A critical review is not automatically a violation of Google policy.",
+    emptyFilter: "There are no reviews in this filter.",
     guest: "Google guest",
     source: "Adapted public review · details anonymised",
     reply: "Suggested reply",
@@ -140,9 +147,9 @@ const ui = {
     minutes: "min saved",
     estimate: "Demo estimate: 6 min writing − 1 min approval.",
     reset: "Reset demo",
-    cta: "I want replies like these for my venue",
+    cta: "I want replies like these for my location",
     ctaTitle: "ReviewGuard pilot",
-    ctaBody: "30 days · 1 venue · up to 20 processed reviews",
+    ctaBody: "30 days · 1 location · up to 20 processed reviews",
     ctaNote: "Send us your Google Business Profile link. We will confirm the scope, market-specific price and pilot availability before requesting payment.",
     ctaForm: "Open the enquiry form",
     close: "Back to demo",
@@ -168,7 +175,6 @@ function createInitialState(): SessionState {
     managerNotes: { pl: {}, en: {} },
     viewed: [],
     edited: [],
-    approved: [],
     copied: [],
   };
 }
@@ -177,62 +183,10 @@ function unique(items: string[], next: string) {
   return items.includes(next) ? items : [...items, next];
 }
 
-function shortenReply(text: string) {
-  const sentences = text.match(/[^.!?]+[.!?]+/g);
-  if (!sentences?.length) return text;
-  return sentences.slice(0, 2).join(" ").trim();
-}
-
 function withoutKey(record: Record<string, string>, key: string) {
   const next = { ...record };
   delete next[key];
   return next;
-}
-
-function alternateReply(review: DemoReview, locale: DemoLocale, style: ReplyStyle) {
-  const detail = review.detail[locale].toLocaleLowerCase(locale === "pl" ? "pl-PL" : "en-GB");
-
-  if (locale === "pl") {
-    if (review.category === "quick") {
-      if (style === "concise") return `Dziękujemy za opinię i docenienie: ${detail}. Do zobaczenia ponownie!`;
-      if (style === "casual") return `Ale miło to czytać — ${detail} to dokładnie efekt, na którym nam zależy. Do zobaczenia przy kolejnej pizzy! 🍕`;
-      return `Dziękujemy za miłe słowa! Szczególnie cieszy nas, że docenili Państwo ${detail}. Będzie nam bardzo miło gościć Państwa ponownie.`;
-    }
-    if (review.category === "personalize") {
-      if (style === "concise") return `Dziękujemy za konkretną uwagę: ${detail}. Przekazujemy ją zespołowi i sprawdzimy ten obszar.`;
-      if (style === "casual") return `Dzięki za szczery sygnał — ${detail}. Bierzemy go na serio i chcemy wypaść lepiej następnym razem.`;
-      return `Dziękujemy za podzielenie się uwagami dotyczącymi: ${detail}. Doceniamy szczerość i przekażemy ten sygnał zespołowi, aby kolejna wizyta wypadła lepiej.`;
-    }
-    if (style === "concise") return `Przepraszamy za opisane doświadczenie: ${detail}. Sprawdzimy tę sytuację z zespołem.`;
-    if (style === "casual") return `Tak nie powinno to wyglądać — przepraszamy za ${detail}. Sprawdzimy, co zawiodło, żeby następnym razem było lepiej.`;
-    return `Przykro nam z powodu opisanego doświadczenia dotyczącego: ${detail}. Dziękujemy za sygnał — omówimy sytuację z zespołem i zadbamy o właściwy standard obsługi.`;
-  }
-
-  if (review.category === "quick") {
-    if (style === "concise") return `Thank you for your review and for highlighting ${detail}. We hope to see you again soon!`;
-    if (style === "casual") return `This is lovely to read — ${detail} is exactly the experience we aim for. See you for another pizza! 🍕`;
-    return `Thank you for your kind words! We are especially pleased that you appreciated ${detail}. It would be a pleasure to welcome you again.`;
-  }
-  if (review.category === "personalize") {
-    if (style === "concise") return `Thank you for the specific feedback about ${detail}. We will share it with the team and review this area.`;
-    if (style === "casual") return `Thanks for the honest note about ${detail}. We are taking it seriously and want to do better next time.`;
-    return `Thank you for sharing your feedback about ${detail}. We appreciate your honesty and will pass it to the team so that your next visit can be better.`;
-  }
-  if (style === "concise") return `We are sorry about your experience with ${detail}. We will review what happened with the team.`;
-  if (style === "casual") return `That is not how it should have gone — sorry about ${detail}. We will look into what failed and work to make the next visit better.`;
-  return `We are sorry about the experience you described regarding ${detail}. Thank you for raising it — we will review the situation with the team and reinforce the standard we expect.`;
-}
-
-function contextualAlternateReply(locale: DemoLocale) {
-  return locale === "pl"
-    ? "Przepraszamy za opóźnienie, zimne zamówienie i brak właściwej reakcji po zgłoszeniu. Sprawdziliśmy sytuację: wiadomość nie dotarła wcześniej do managera zmiany. Skontaktujemy się z Państwem, aby zaproponować ponowne przygotowanie zamówienia i domknąć sprawę."
-    : "We apologise for the delay, the cold order and the lack of a proper response when you first raised it. We checked what happened: the message did not reach the shift manager. We will contact you to offer a replacement order and resolve the matter.";
-}
-
-function contextualReply(locale: DemoLocale) {
-  return locale === "pl"
-    ? "Dziękujemy za ponowny sygnał i przepraszamy za opóźnioną, zimną dostawę oraz brak skutecznego wyjaśnienia sprawy. Potwierdziliśmy opóźnienie, a wcześniejsza wiadomość nie dotarła do osoby prowadzącej zmianę. Manager skontaktuje się z Państwem i zaproponuje ponowne przygotowanie zamówienia."
-    : "Thank you for raising this again. We are sorry about the late, cold delivery and the lack of a proper resolution. We confirmed the delay, and the earlier message did not reach the shift manager. The manager will contact you and offer to remake the order.";
 }
 
 function stars(rating: number) {
@@ -252,8 +206,8 @@ type WorkspaceProps = {
   state: SessionState;
   selected: DemoReview;
   filtered: DemoReview[];
-  filter: Filter;
-  setFilter: (filter: Filter) => void;
+  filter: ReviewFilter;
+  setFilter: (filter: ReviewFilter) => void;
   selectReview: (id: string) => void;
   setState: React.Dispatch<React.SetStateAction<SessionState>>;
   openCta: () => void;
@@ -294,11 +248,12 @@ function ReviewCard({
 
 function FilterBar({ locale, filter, setFilter }: Pick<WorkspaceProps, "locale" | "filter" | "setFilter">) {
   const c = ui[locale];
-  const filters: { value: Filter; label: string }[] = [
+  const filters: { value: ReviewFilter; label: string }[] = [
     { value: "all", label: c.all },
     { value: "quick", label: c.quick },
     { value: "personalize", label: c.personalize },
     { value: "caution", label: c.caution },
+    { value: "violations", label: c.noViolations },
   ];
   return (
     <div className={styles.filters} aria-label={c.queue}>
@@ -344,22 +299,16 @@ function ReplyEditor({ locale, review, state, setState }: Pick<WorkspaceProps, "
   const selectedStyle = state.replyStyles[review.id] ?? "warm";
   const length = state.lengths[review.id] ?? "standard";
   const savedDraft = state.drafts[locale][review.id];
-  const baseReply = review.replies[selectedStyle][locale];
   const replyVersion = state.replyVersions?.[review.id] ?? 0;
-  const otherLocale = locale === "pl" ? "en" : "pl";
-  const hasManagerContext = Boolean(
-    state.managerNotes[locale][review.id] || state.managerNotes[otherLocale][review.id],
-  );
-  const preparedReply = replyVersion % 2 === 0
-    ? baseReply
-    : alternateReply(review, locale, selectedStyle);
-  const contextualBase = review.id === "C1" && hasManagerContext
-    ? (replyVersion % 2 === 0 ? contextualReply(locale) : contextualAlternateReply(locale))
-    : preparedReply;
-  const reply = savedDraft || (length === "short" ? shortenReply(contextualBase) : contextualBase);
-  const note = state.managerNotes[locale][review.id]
-    || (state.managerNotes[otherLocale][review.id] ? review.managerContext?.[locale] : "")
-    || "";
+  const note = state.managerNotes[locale][review.id] || "";
+  const hasManagerContext = Boolean(note.trim());
+  const reply = savedDraft || preparedReply(review, {
+    locale,
+    style: selectedStyle,
+    version: replyVersion,
+    length,
+    managerNote: note,
+  });
   const status = state.statuses[review.id];
 
   function prepare(mutator: (current: SessionState) => SessionState) {
@@ -367,31 +316,23 @@ function ReplyEditor({ locale, review, state, setState }: Pick<WorkspaceProps, "
   }
 
   function changeStyle(nextStyle: ReplyStyle) {
-    prepare((current) => ({
+    prepare((current) => invalidateApproval({
       ...current,
       replyStyles: { ...current.replyStyles, [review.id]: nextStyle },
       replyVersions: { ...current.replyVersions, [review.id]: 0 },
       drafts: { ...current.drafts, [locale]: withoutKey(current.drafts[locale], review.id) },
-      statuses: {
-        ...current.statuses,
-        [review.id]: current.statuses[review.id] === "context" && !note ? "context" : "ready",
-      },
-    }));
+    }, review.id, nextReplyStatus(review, note)));
   }
 
   function regenerate() {
-    prepare((current) => ({
+    prepare((current) => invalidateApproval({
       ...current,
       replyVersions: {
         ...current.replyVersions,
         [review.id]: ((current.replyVersions?.[review.id] ?? 0) + 1) % 2,
       },
       drafts: { ...current.drafts, [locale]: withoutKey(current.drafts[locale], review.id) },
-      statuses: {
-        ...current.statuses,
-        [review.id]: current.statuses[review.id] === "context" && !note ? "context" : "ready",
-      },
-    }));
+    }, review.id, nextReplyStatus(review, note)));
   }
 
   async function copyReply() {
@@ -436,11 +377,11 @@ function ReplyEditor({ locale, review, state, setState }: Pick<WorkspaceProps, "
             <button
               aria-pressed={length === item}
               key={item}
-              onClick={() => prepare((current) => ({
+              onClick={() => prepare((current) => invalidateApproval({
                 ...current,
                 lengths: { ...current.lengths, [review.id]: item },
                 drafts: { ...current.drafts, [locale]: withoutKey(current.drafts[locale], review.id) },
-              }))}
+              }, review.id, nextReplyStatus(review, note)))}
               type="button"
             >
               {c[item]}
@@ -449,47 +390,48 @@ function ReplyEditor({ locale, review, state, setState }: Pick<WorkspaceProps, "
         </div>
       </div>
 
-      {review.id === "C1" ? (
+      {review.managerContext ? (
         <div className={styles.managerBox}>
           <strong>{c.managerTitle}</strong>
           <p>{c.managerHint}</p>
           <textarea
-            onChange={(event) => prepare((current) => ({
+            onChange={(event) => prepare((current) => invalidateApproval({
               ...current,
               managerNotes: {
                 ...current.managerNotes,
                 [locale]: { ...current.managerNotes[locale], [review.id]: event.target.value },
               },
-            }))}
+              drafts: { ...current.drafts, [locale]: withoutKey(current.drafts[locale], review.id) },
+            }, review.id, "context"))}
             placeholder={c.managerPlaceholder}
             value={note}
           />
           <div className={styles.managerActions}>
             <button
               className={styles.secondaryButton}
-              onClick={() => prepare((current) => ({
+              onClick={() => prepare((current) => invalidateApproval({
                 ...current,
                 managerNotes: {
                   ...current.managerNotes,
-                  [locale]: { ...current.managerNotes[locale], [review.id]: review.managerContext?.[locale] ?? "" },
+                  [locale]: { ...current.managerNotes[locale], [review.id]: review.managerContext?.example[locale] ?? "" },
                 },
-              }))}
+                drafts: { ...current.drafts, [locale]: withoutKey(current.drafts[locale], review.id) },
+              }, review.id, "context"))}
               type="button"
             >
               {c.exampleNote}
             </button>
             <button
               className={styles.darkButton}
-              disabled={!note.trim()}
-              onClick={() => prepare((current) => ({
+              disabled={!hasManagerContext}
+              onClick={() => prepare((current) => invalidateApproval({
                 ...current,
                 drafts: {
                   ...current.drafts,
-                  [locale]: { ...current.drafts[locale], [review.id]: contextualReply(locale) },
+                  [locale]: { ...current.drafts[locale], [review.id]: reply },
                 },
-                statuses: { ...current.statuses, [review.id]: "ready" },
                 edited: unique(current.edited, review.id),
-              }))}
+              }, review.id, "ready"))}
               type="button"
             >
               {c.useContext}
@@ -501,15 +443,14 @@ function ReplyEditor({ locale, review, state, setState }: Pick<WorkspaceProps, "
       <textarea
         aria-label={c.reply}
         className={styles.replyTextarea}
-        onChange={(event) => prepare((current) => ({
+        onChange={(event) => prepare((current) => invalidateApproval({
           ...current,
           drafts: {
             ...current.drafts,
             [locale]: { ...current.drafts[locale], [review.id]: event.target.value },
           },
-          statuses: { ...current.statuses, [review.id]: "ready" },
           edited: unique(current.edited, review.id),
-        }))}
+        }, review.id, "ready"))}
         value={reply}
       />
 
@@ -520,7 +461,6 @@ function ReplyEditor({ locale, review, state, setState }: Pick<WorkspaceProps, "
           onClick={() => prepare((current) => ({
             ...current,
             statuses: { ...current.statuses, [review.id]: "approved" },
-            approved: unique(current.approved, review.id),
           }))}
           type="button"
         >
@@ -537,10 +477,11 @@ function ReplyEditor({ locale, review, state, setState }: Pick<WorkspaceProps, "
 
 function SessionSummary({ locale, state, reset, openCta }: { locale: DemoLocale; state: SessionState; reset: () => void; openCta: () => void }) {
   const c = ui[locale];
+  const approval = sessionSummary(state);
   const stats = [
     [c.opened, state.viewed.length],
     [c.edited, state.edited.length],
-    [c.approvedCount, state.approved.length],
+    [c.approvedCount, approval.approved],
     [c.copiedCount, state.copied.length],
   ] as const;
   return (
@@ -556,7 +497,7 @@ function SessionSummary({ locale, state, reset, openCta }: { locale: DemoLocale;
       </dl>
       <div className={styles.timeSaved}>
         <span>{c.saved}</span>
-        <strong>{state.approved.length * 5} {c.minutes}</strong>
+        <strong>{approval.savedMinutes} {c.minutes}</strong>
         <small>{c.estimate}</small>
       </div>
       <button className={styles.ctaButton} onClick={openCta} type="button">{c.cta}</button>
@@ -615,6 +556,9 @@ function DesktopWorkspace(props: WorkspaceProps) {
         <aside className={styles.queuePanel}>
           <h1>{c.queue}</h1>
           <div className={styles.reviewList}>
+            {!props.filtered.length ? (
+              <p className={styles.emptyState}>{c.emptyFilter}</p>
+            ) : null}
             {props.filtered.map((review) => (
               <ReviewCard
                 active={review.id === props.selected.id}
@@ -628,25 +572,37 @@ function DesktopWorkspace(props: WorkspaceProps) {
           </div>
         </aside>
         <section className={styles.detailPanel}>
-          <div className={styles.detailNavigation}>
-            <p className={styles.eyebrow}>{c.workflow}</p>
-            <ReviewStepper
-              locale={props.locale}
-              reviews={props.filtered}
-              selectedId={props.selected.id}
-              selectReview={props.selectReview}
-            />
-          </div>
-          <ReviewDetail locale={props.locale} review={props.selected} status={props.state.statuses[props.selected.id]} />
+          {props.filtered.length ? (
+            <>
+              <div className={styles.detailNavigation}>
+                <p className={styles.eyebrow}>{c.workflow}</p>
+                <ReviewStepper
+                  locale={props.locale}
+                  reviews={props.filtered}
+                  selectedId={props.selected.id}
+                  selectReview={props.selectReview}
+                />
+              </div>
+              <ReviewDetail locale={props.locale} review={props.selected} status={props.state.statuses[props.selected.id]} />
+            </>
+          ) : (
+            <div className={styles.emptyState}>
+              <strong>{c.noViolations}</strong>
+              <p>{c.noViolationsHelp}</p>
+            </div>
+          )}
           <SessionSummary locale={props.locale} openCta={props.openCta} reset={() => props.setState(createInitialState())} state={props.state} />
         </section>
-        <ReplyEditor locale={props.locale} review={props.selected} setState={props.setState} state={props.state} />
+        {props.filtered.length ? (
+          <ReplyEditor locale={props.locale} review={props.selected} setState={props.setState} state={props.state} />
+        ) : null}
       </div>
     </main>
   );
 }
 
 function MobileWorkspace(props: WorkspaceProps) {
+  const c = ui[props.locale];
   const currentIndex = Math.max(0, props.filtered.findIndex((review) => review.id === props.selected.id));
   return (
     <main className={`${styles.workspace} ${styles.mobileWorkspace}`}>
@@ -655,23 +611,32 @@ function MobileWorkspace(props: WorkspaceProps) {
         <FilterBar locale={props.locale} filter={props.filter} setFilter={props.setFilter} />
       </header>
       <section className={styles.focusStage}>
-        <div className={styles.progressLine}>
-          <span style={{ width: `${Math.max(9, ((currentIndex + 1) / Math.max(1, props.filtered.length)) * 100)}%` }} />
-        </div>
-        <div className={styles.focusKicker}>
-          <strong>{props.selected.detail[props.locale]}</strong>
-          <ReviewStepper
-            dark
-            locale={props.locale}
-            reviews={props.filtered}
-            selectedId={props.selected.id}
-            selectReview={props.selectReview}
-          />
-        </div>
-        <div className={styles.focusGrid}>
-          <ReviewDetail locale={props.locale} review={props.selected} status={props.state.statuses[props.selected.id]} />
-          <ReplyEditor locale={props.locale} review={props.selected} setState={props.setState} state={props.state} />
-        </div>
+        {props.filtered.length ? (
+          <>
+            <div className={styles.progressLine}>
+              <span style={{ width: `${Math.max(9, ((currentIndex + 1) / Math.max(1, props.filtered.length)) * 100)}%` }} />
+            </div>
+            <div className={styles.focusKicker}>
+              <strong>{props.selected.detail[props.locale]}</strong>
+              <ReviewStepper
+                dark
+                locale={props.locale}
+                reviews={props.filtered}
+                selectedId={props.selected.id}
+                selectReview={props.selectReview}
+              />
+            </div>
+            <div className={styles.focusGrid}>
+              <ReviewDetail locale={props.locale} review={props.selected} status={props.state.statuses[props.selected.id]} />
+              <ReplyEditor locale={props.locale} review={props.selected} setState={props.setState} state={props.state} />
+            </div>
+          </>
+        ) : (
+          <div className={styles.emptyState}>
+            <strong>{c.noViolations}</strong>
+            <p>{c.noViolationsHelp}</p>
+          </div>
+        )}
       </section>
       <div className={styles.focusFooter}>
         <div className={styles.miniQueue}>
@@ -713,7 +678,7 @@ export function DemoPrototype({
   const c = ui[locale];
   const languagePath = locale === "pl" ? "/demo-prototype" : "/pl/demo-prototype";
   const [state, setState] = useState<SessionState>(createInitialState);
-  const [filter, setFilter] = useState<Filter>("all");
+  const [filter, setFilter] = useState<ReviewFilter>("all");
   const [ctaOpen, setCtaOpen] = useState(false);
   const hydrated = useRef(false);
 
@@ -743,11 +708,10 @@ export function DemoPrototype({
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state]);
 
-  const filtered = useMemo(() => demoReviews.filter((review) => {
-    if (filter === "all") return true;
-    if (["quick", "personalize", "caution"].includes(filter)) return review.category === filter;
-    return state.statuses[review.id] === filter;
-  }), [filter, state.statuses]);
+  const filtered = useMemo(
+    () => demoReviews.filter((review) => matchesReviewFilter(review, filter)),
+    [filter],
+  );
 
   const selected = demoReviews.find((review) => review.id === state.selectedId) ?? demoReviews[0];
 
@@ -755,14 +719,12 @@ export function DemoPrototype({
     setState((current) => ({ ...current, selectedId: id, viewed: unique(current.viewed, id) }));
   }
 
-  function changeFilter(nextFilter: Filter) {
+  function changeFilter(nextFilter: ReviewFilter) {
     setFilter(nextFilter);
     setState((current) => {
-      const matches = demoReviews.filter((review) => {
-        if (nextFilter === "all") return true;
-        if (["quick", "personalize", "caution"].includes(nextFilter)) return review.category === nextFilter;
-        return current.statuses[review.id] === nextFilter;
-      });
+      const matches = demoReviews.filter((review) => (
+        matchesReviewFilter(review, nextFilter)
+      ));
       if (matches.some((review) => review.id === current.selectedId) || !matches[0]) return current;
       return {
         ...current,

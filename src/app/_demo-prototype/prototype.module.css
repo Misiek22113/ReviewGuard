@@ -590,6 +590,22 @@
   padding: 1px 7px 8px 1px;
 }
 
+.emptyState {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 24px;
+  background: var(--sheet);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.emptyState p {
+  margin: 0;
+  color: #69756d;
+}
+
 .detailPanel {
   display: grid;
   align-content: start;

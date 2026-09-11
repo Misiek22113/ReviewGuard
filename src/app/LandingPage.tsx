@@ -63,12 +63,12 @@ export function LandingPage({ locale }: { locale: Locale }) {
               {copy.heroDescription}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link
+              <a
                 className="rounded-sm bg-[#17211c] px-6 py-4 text-center text-sm font-bold text-[#f7f2e8] transition hover:bg-[#2e3b34] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c]"
-                href={copy.demoHref}
+                href="#pilot"
               >
                 {copy.primaryCta}
-              </Link>
+              </a>
               <a
                 className="rounded-sm border border-[#17211c]/25 px-6 py-4 text-center text-sm font-bold transition hover:border-[#17211c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c]"
                 href="#pilot"
@@ -238,7 +238,10 @@ export function LandingPage({ locale }: { locale: Locale }) {
           <h2 className="mt-3 text-4xl font-bold leading-tight">{copy.formTitle}</h2>
           <p className="mt-5 text-lg leading-8 text-[#526157]">{copy.formDescription}</p>
         </div>
-        <LeadForm copy={copy.form} locale={locale} />
+        <LeadForm
+          contactEmail={process.env.LEAD_NOTIFICATION_EMAIL ?? ""}
+          copy={copy.form}
+        />
       </section>
     </main>
   );
