@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LeadForm } from "./LeadForm";
 import { landingCopy, type Locale } from "./landing-copy";
 
@@ -23,7 +24,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
             </div>
           </a>
           <div className="flex shrink-0 items-center gap-2">
-            <a
+            <Link
               aria-label={`${locale === "en" ? "Switch to" : "Przełącz na"} ${copy.languageName}`}
               className="grid min-h-10 min-w-10 place-items-center rounded-sm border border-[#17211c]/25 px-2 font-mono text-xs font-semibold transition hover:border-[#17211c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c]"
               href={copy.languageHref}
@@ -31,10 +32,16 @@ export function LandingPage({ locale }: { locale: Locale }) {
               lang={copy.language === "en" ? "pl" : "en"}
             >
               {copy.languageCode}
-            </a>
+            </Link>
+            <Link
+              className="hidden rounded-sm border border-[#17211c]/25 px-4 py-2 text-sm font-semibold transition hover:border-[#17211c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c] md:block"
+              href={copy.demoHref}
+            >
+              {copy.navDemo}
+            </Link>
             <a
               className="hidden rounded-sm border border-[#17211c] px-4 py-2 text-sm font-semibold transition hover:bg-[#17211c] hover:text-[#f7f2e8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c] sm:block"
-              href="#request-audit"
+              href="#pilot"
             >
               {copy.navCta}
             </a>
@@ -56,15 +63,15 @@ export function LandingPage({ locale }: { locale: Locale }) {
               {copy.heroDescription}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
+              <Link
                 className="rounded-sm bg-[#17211c] px-6 py-4 text-center text-sm font-bold text-[#f7f2e8] transition hover:bg-[#2e3b34] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c]"
-                href="#request-audit"
+                href={copy.demoHref}
               >
                 {copy.primaryCta}
-              </a>
+              </Link>
               <a
                 className="rounded-sm border border-[#17211c]/25 px-6 py-4 text-center text-sm font-bold transition hover:border-[#17211c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c]"
-                href="#offer"
+                href="#pilot"
               >
                 {copy.secondaryCta}
               </a>
@@ -143,6 +150,12 @@ export function LandingPage({ locale }: { locale: Locale }) {
             </div>
 
             <p className="mt-3 text-xs leading-5 text-[#657068]">{copy.sampleNote}</p>
+            <Link
+              className="mt-5 flex items-center justify-between border-t border-[#17211c]/15 pt-4 text-sm font-bold underline decoration-[#d6f36a] decoration-4 underline-offset-4 transition hover:decoration-[#17211c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c]"
+              href={copy.demoHref}
+            >
+              {copy.sampleCta}<span aria-hidden="true">→</span>
+            </Link>
           </aside>
         </div>
       </section>
@@ -176,7 +189,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </p>
         </div>
         <div className="grid gap-3">
-          {copy.auditItems.map((item, index) => (
+          {copy.featureItems.map((item, index) => (
             <div
               className="flex gap-4 border border-[#17211c]/10 bg-[#fffdf7] p-5"
               key={item}
@@ -216,7 +229,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
 
       <section
         className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-10"
-        id="request-audit"
+        id="pilot"
       >
         <div>
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#657068]">

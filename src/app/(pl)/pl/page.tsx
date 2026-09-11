@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { LandingPage } from "../../LandingPage";
 
 export const metadata: Metadata = {
-  title: "ReviewGuard - audyt opinii Google dla restauracji",
+  title: "ReviewGuard - gotowe odpowiedzi na opinie Google dla restauracji",
   description:
-    "Audyt opinii Google dla restauracji: recenzje wymagające reakcji, podejrzane wpisy i gotowe propozycje odpowiedzi.",
+    "Panel opinii dla restauracji: uporządkowana kolejka, gotowe odpowiedzi, kontekst lokalu i akceptacja przed publikacją.",
 };
 
 export default function PolishHome() {

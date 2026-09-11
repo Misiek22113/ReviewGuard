@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   demoReviews,
@@ -81,7 +82,8 @@ const ui = {
     cta: "Chcę takie odpowiedzi dla mojego lokalu",
     ctaTitle: "Pilotaż ReviewGuard",
     ctaBody: "80 zł · 30 dni · 1 lokal · do 20 przetworzonych opinii",
-    ctaNote: "W wybranej wersji ten krok przejdzie do formularza zgłoszeniowego. Płatność wysyłamy dopiero po potwierdzeniu zakresu i dostępności pilotażu.",
+    ctaNote: "Wyślij link do wizytówki Google. Najpierw potwierdzimy zakres i dostępność pilotażu — dopiero potem prześlemy płatność.",
+    ctaForm: "Przejdź do formularza",
     close: "Wróć do demo",
     desktopLayout: "Dyspozytornia",
     mobileLayout: "Tryb skupienia",
@@ -140,7 +142,8 @@ const ui = {
     cta: "I want replies like these for my venue",
     ctaTitle: "ReviewGuard pilot",
     ctaBody: "30 days · 1 venue · up to 20 processed reviews",
-    ctaNote: "Pilot pricing is validated separately for each market. This step will open the enquiry form; payment is requested only after scope, price and availability are confirmed.",
+    ctaNote: "Send us your Google Business Profile link. We will confirm the scope, market-specific price and pilot availability before requesting payment.",
+    ctaForm: "Open the enquiry form",
     close: "Back to demo",
     desktopLayout: "Control desk",
     mobileLayout: "Focus mode",
@@ -561,11 +564,12 @@ function SessionSummary({ locale, state, reset, openCta }: { locale: DemoLocale;
 
 function DesktopWorkspace(props: WorkspaceProps) {
   const c = ui[props.locale];
+  const pendingCount = demoReviews.filter((review) => props.state.statuses[review.id] !== "approved").length;
   return (
     <main className={`${styles.workspace} ${styles.desktopWorkspace}`}>
       <header className={styles.appHeader}>
         <Brand layout="desktop" locale={props.locale} />
-        <div className={styles.headerSignal}><span>{props.filtered.length}</span>{c.today}</div>
+        <div aria-live="polite" className={styles.headerSignal}><span>{pendingCount}</span>{c.today}</div>
       </header>
       <div className={styles.aToolbar}>
         <FilterBar locale={props.locale} filter={props.filter} setFilter={props.setFilter} />
@@ -645,11 +649,12 @@ function MobileWorkspace(props: WorkspaceProps) {
 function Brand({ locale, layout }: { locale: DemoLocale; layout: "desktop" | "mobile" }) {
   const c = ui[locale];
   const layoutName = layout === "desktop" ? c.desktopLayout : c.mobileLayout;
+  const homePath = locale === "pl" ? "/pl#top" : "/#top";
   return (
-    <div className={styles.brand}>
+    <Link aria-label={locale === "pl" ? "Wróć na stronę główną ReviewGuard" : "Back to the ReviewGuard homepage"} className={styles.brand} href={homePath}>
       <span className={styles.mark}>RG</span>
       <div><strong>{c.product}</strong><small>{c.demo} · {layoutName}</small></div>
-    </div>
+    </Link>
   );
 }
 
@@ -730,7 +735,10 @@ export function DemoPrototype({
             <h2 id="pilot-title">{c.ctaTitle}</h2>
             <strong>{c.ctaBody}</strong>
             <p>{c.ctaNote}</p>
-            <button className={styles.darkButton} onClick={() => setCtaOpen(false)} type="button">{c.close}</button>
+            <div className={styles.modalActions}>
+              <Link className={styles.darkButton} href={`${locale === "pl" ? "/pl" : "/"}#pilot`}>{c.ctaForm}</Link>
+              <button className={styles.secondaryButton} onClick={() => setCtaOpen(false)} type="button">{c.close}</button>
+            </div>
           </section>
         </div>
       ) : null}

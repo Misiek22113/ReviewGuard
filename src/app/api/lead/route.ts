@@ -82,14 +82,14 @@ export async function POST(request: Request) {
 
   const resend = new Resend(apiKey);
   const message = [
-    "New ReviewGuard audit request",
+    "New ReviewGuard pilot enquiry",
     "",
     `Language: ${locale.toUpperCase()}`,
     `Email: ${email}`,
     `Restaurant: ${restaurant}`,
     `Google Business Profile: ${googleUrl}`,
     "",
-    "Biggest review challenge:",
+    "Current review workflow:",
     problem,
   ].join("\n");
 
@@ -98,7 +98,7 @@ export async function POST(request: Request) {
       from: fromEmail,
       to: notificationEmail,
       replyTo: email,
-      subject: `ReviewGuard audit (${locale.toUpperCase()}) - ${restaurant}`,
+      subject: `ReviewGuard pilot (${locale.toUpperCase()}) - ${restaurant}`,
       text: message,
     });
 

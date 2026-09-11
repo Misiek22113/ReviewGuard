@@ -4,10 +4,10 @@ REVIEWGUARD — AKTUALNY CONTENT STRONY
 === SEO / METADATA ===
 
 Title:
-ReviewGuard - audyt opinii Google dla restauracji
+ReviewGuard - gotowe odpowiedzi na opinie Google dla restauracji
 
 Description:
-Audyt opinii Google dla restauracji: recenzje wymagajace reakcji, podejrzane wpisy i gotowe propozycje odpowiedzi.
+Panel opinii dla restauracji: uporzadkowana kolejka, gotowe odpowiedzi, kontekst lokalu i akceptacja przed publikacja.
 
 
 === NAWIGACJA ===
@@ -15,54 +15,55 @@ Audyt opinii Google dla restauracji: recenzje wymagajace reakcji, podejrzane wpi
 Logo:
 RG
 ReviewGuard
-audyt opinii Google
+odpowiedzi na opinie Google
 
-Przycisk:
-Poproś o audyt
+Przyciski:
+Demo panelu
+Zglos lokal
 
 
 === HERO / PIERWSZA SEKCJA ===
 
 Etykieta:
-dla restauracji i lokali gastronomicznych
+dla wlascicieli i operatorow restauracji
 
 Naglowek:
-Sprawdz, czy opinie Google nie zabieraja Ci rezerwacji.
+Odpowiadaj na opinie Google bez pisania kazdej odpowiedzi od zera.
 
 Opis:
-Audyt opinii Google dla restauracji: wskazuje recenzje wymagajace reakcji, podejrzane wpisy i podpowiada, na co odpowiedziec w pierwszej kolejnosci.
+ReviewGuard porzadkuje kolejke opinii i przygotowuje odpowiedzi w stylu Twojego lokalu. Ty sprawdzasz tresc, poprawiasz ja, jesli chcesz, i zatwierdzasz.
 
 Glowny przycisk:
-Sprawdz moja wizytowke
+Wyprobuj interaktywne demo
 
 Drugi przycisk:
-Zobacz, co dostajesz
+Zglos lokal do pilotazu
 
 Cena:
-49 zł za pierwszy ręcznie przygotowany audyt.
+80 zl · 30 dni · 1 lokal · do 20 opinii.
 
 Informacja pod przyciskami:
-Oferta dla pierwszych restauracji. Bez obietnic usuwania opinii — dostajesz konkretną analizę i plan reakcji.
+Na start dzialamy z Google i zawsze zostawiamy ostateczna decyzje czlowiekowi. Platnosc dopiero po potwierdzeniu zakresu.
 
 
-=== PRZYKŁADOWY AUDYT ===
+=== PODGLAD PANELU ===
 
 Etykieta:
-przykładowy audyt
+podglad panelu
 
 Naglowek:
-Jedna opinia. Konkretna reakcja.
+Opinia wchodzi. Odpowiedz czeka.
 
 Opis:
-Tak wygląda fragment ręcznie przygotowanego audytu dla restauracji.
+Tak wyglada pojedyncza sprawa w kolejce ReviewGuard. Pelny przeplyw mozna sprawdzic w interaktywnym demo.
 
 Opinia — Pani M., 1 gwiazdka:
 „Za długi czas oczekiwania. Kelnerka powiedziała, że za 5 minut, a minęła godzina.”
 
 Ocena:
 Priorytet odpowiedzi: wysoki
-Ryzyko wizerunkowe: wysokie
-Podejrzenie spamu: niskie
+Ton odpowiedzi: spokojny
+Status: gotowa
 
 Proponowana odpowiedź:
 Pani M., przepraszamy za tak długi czas oczekiwania oraz za przekazanie informacji, która nie odpowiadała rzeczywistej sytuacji. Rozumiemy, jak frustrujące musiało być oczekiwanie przez godzinę po zapowiedzi kilku minut. Chcielibyśmy sprawdzić, co wydarzyło się podczas Pani wizyty. Prosimy o kontakt w wiadomości prywatnej oraz podanie dnia i przybliżonej godziny wizyty. Dziękujemy za zwrócenie nam uwagi na ten problem.
@@ -77,30 +78,30 @@ Etykieta:
 problem
 
 Naglowek:
-Jedna zla opinia moze wisiec wyzej niz menu dnia.
+Opinie nie powinny czekac, az ktos znajdzie godzine na odpisywanie.
 
 Problemy:
-1. Nie widzisz nowych negatywnych opinii wystarczajaco szybko.
-2. Nie wiesz, jak odpowiedziec profesjonalnie, bez przyznawania winy.
-3. Nie wiesz, ktore podejrzane wpisy warto zglosic do Google.
+1. Przy wielu opiniach latwo stracic kontrole nad tym, ktore nadal czekaja na odpowiedz.
+2. Dobra odpowiedz wymaga tonu marki, konkretu i ostroznosci, gdy nie znasz wszystkich faktow.
+3. Wlasciciel albo marketing poswieca czas na pisanie od zera zamiast tylko podjac decyzje.
 
 
 === SEKCJA: CO DOSTAJESZ ===
 
 Etykieta:
-co dostajesz
+panel odpowiedzi
 
 Naglowek:
-Audyt opinii, ktory da sie wdrozyc bez nowego systemu.
+Jedna kolejka, gotowe propozycje i pelna kontrola przed publikacja.
 
 Opis:
-Nie musisz podłączać API Google ani wdrażać nowego systemu. Sprawdzamy opinie według checklisty i odsyłamy konkret: co odpowiedzieć, co obserwować i które wpisy warto zweryfikować lub zgłosić.
+W pilotazu przygotowujemy odpowiedzi do opinii z Twojej wizytowki. Panel pokazuje, co wymaga reakcji, pozwala dobrac styl i zachowac kontekst, a zatwierdzenie zawsze nalezy do Ciebie.
 
-Zakres audytu:
-1. Opinie 1-3 gwiazdki, ktore wymagaja spokojnej odpowiedzi
-2. Podejrzane wzorce: puste opinie, serie negatywnych wpisow, agresywny ton
-3. Gotowe propozycje odpowiedzi do wklejenia w Google
-4. Materialy pomocnicze do zgloszenia opinii naruszajacej zasady Google
+Zakres panelu:
+1. Kolejka nowych i zaleglych opinii wymagajacych reakcji
+2. Gotowe odpowiedzi w wybranym stylu i dlugosci
+3. Miejsce na potwierdzony kontekst od managera
+4. Edycja, akceptacja i kopiowanie odpowiedzi przed publikacja
 
 
 === SEKCJA: JAK TO DZIAŁA ===
@@ -109,27 +110,27 @@ Etykieta:
 jak to działa
 
 Naglowek:
-Od profilu Google do gotowego planu reakcji.
+Od wizytowki Google do zatwierdzonej odpowiedzi.
 
 Opis:
-Na początek przygotowujemy audyty ręcznie, aby każda restauracja otrzymała konkretną analizę i plan reakcji.
+Na poczatku przygotowujemy opinie i propozycje odpowiedzi dla kazdego lokalu recznie wspomaganym procesem. Dzieki temu uczymy sie realnego sposobu pracy operatorow przed pelna integracja z Google.
 
 Kroki:
-01. Zostawiasz link do profilu Google.
-02. Sprawdzamy opinie wedlug checklisty i przygotowujemy mini-audyt.
-03. Dostajesz plan reakcji, propozycje odpowiedzi i nastepne kroki.
+01. Zostawiasz link do wizytowki Google i wybieramy opinie do pilotazu.
+02. Przygotowujemy kolejke oraz propozycje odpowiedzi w stylu Twojego lokalu.
+03. Przegladasz, poprawiasz i zatwierdzasz odpowiedzi — bez pisania od pustej kartki.
 
 
 === SEKCJA: FORMULARZ ===
 
 Etykieta:
-formularz
+pilotaz
 
 Naglowek:
-Chcesz audyt opinii dla swojej restauracji?
+Chcesz takie odpowiedzi dla swojego lokalu?
 
 Opis:
-Wyślij link do profilu Google. Odpowiemy z informacją, czy widać opinie wymagające reakcji i czy audyt będzie przydatny dla Twojego lokalu.
+Wyslij link do wizytowki Google. Sprawdzimy liczbe nowych i zaleglych opinii, a potem potwierdzimy zakres oraz dostepnosc 30-dniowego pilotazu.
 
 Pole 1:
 Email
@@ -144,11 +145,11 @@ Link do profilu Google
 Placeholder: https://maps.google.com/...
 
 Pole 4:
-Najwiekszy problem z opiniami
-Placeholder: np. Mamy kilka opinii 1-2 gwiazdki bez odpowiedzi albo podejrzany wpis, ktory chcemy zweryfikowac.
+Jak dzis zajmujecie sie opiniami?
+Placeholder: np. Odpowiada wlasciciel raz w tygodniu; mamy okolo 25 opinii bez odpowiedzi.
 
 Przycisk:
-Wyslij prosbe o audyt
+Zglos lokal do pilotazu
 
 Tekst przycisku podczas wysylania:
 Wysylamy zgloszenie...
@@ -179,14 +180,14 @@ Nie udalo sie wyslac zgloszenia. Sprobuj ponownie za chwile.
 === TRESC GENEROWANEGO MAILA ===
 
 Temat:
-Audyt ReviewGuard - [nazwa restauracji]
+Pilotaz ReviewGuard - [nazwa restauracji]
 
 Tresc:
-Nowe zgłoszenie audytu ReviewGuard
+Nowe zgloszenie do pilotazu ReviewGuard
 
 Email: [email]
 Restauracja: [nazwa restauracji]
 Link do profilu Google: [link]
 
-Najwiekszy problem z opiniami:
+Obecny sposob pracy z opiniami:
 [opis problemu]
