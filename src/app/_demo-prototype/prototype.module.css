@@ -597,6 +597,60 @@
   background: var(--paper);
 }
 
+.detailNavigation {
+  display: grid;
+  gap: 10px;
+}
+
+.detailNavigation .eyebrow {
+  margin: 0;
+}
+
+.reviewStepper {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.reviewStepper button {
+  min-height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 7px 10px;
+  background: var(--sheet);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.reviewStepper button:first-child {
+  justify-self: start;
+}
+
+.reviewStepper button:last-child {
+  justify-self: end;
+}
+
+.reviewStepper button:hover:not(:disabled) {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--lime);
+}
+
+.reviewStepper button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.reviewStepper > span {
+  color: #69756d;
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 10px;
+  font-weight: 600;
+}
+
 .detailPanel .sessionSummary {
   margin-top: 2px;
 }
@@ -651,29 +705,30 @@
 
 .focusKicker {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 16px;
   padding: 16px 0 20px;
-}
-
-.focusKicker span {
-  color: var(--lime);
-  font-family: var(--font-plex-mono), monospace;
-  font-size: 11px;
 }
 
 .focusKicker strong {
   font-size: 14px;
 }
 
-.focusKicker button {
-  border: 0;
+.reviewStepperDark button {
+  border-color: rgba(255, 255, 255, 0.24);
   background: transparent;
   color: var(--paper);
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 700;
+}
+
+.reviewStepperDark button:hover:not(:disabled) {
+  border-color: var(--lime);
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.reviewStepperDark > span {
+  color: var(--lime);
 }
 
 .focusGrid {
@@ -929,12 +984,11 @@
   }
 
   .focusKicker {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
   }
 
-  .focusKicker button {
-    grid-column: 1 / -1;
-    justify-self: end;
+  .focusKicker .reviewStepper {
+    width: 100%;
   }
 
   .focusGrid {

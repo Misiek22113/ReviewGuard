@@ -88,6 +88,7 @@ const ui = {
     desktopLayout: "Dyspozytornia",
     mobileLayout: "Tryb skupienia",
     today: "Dzisiaj do odpowiedzi",
+    previous: "Poprzednia opinia",
     next: "Następna opinia",
     workflow: "Droga opinii do odpowiedzi",
     language: "EN",
@@ -148,6 +149,7 @@ const ui = {
     desktopLayout: "Control desk",
     mobileLayout: "Focus mode",
     today: "Reviews to handle today",
+    previous: "Previous review",
     next: "Next review",
     workflow: "From review to response",
     language: "PL",
@@ -562,6 +564,40 @@ function SessionSummary({ locale, state, reset, openCta }: { locale: DemoLocale;
   );
 }
 
+function ReviewStepper({
+  locale,
+  reviews,
+  selectedId,
+  selectReview,
+  dark = false,
+}: {
+  locale: DemoLocale;
+  reviews: DemoReview[];
+  selectedId: string;
+  selectReview: (id: string) => void;
+  dark?: boolean;
+}) {
+  const c = ui[locale];
+  const currentIndex = Math.max(0, reviews.findIndex((review) => review.id === selectedId));
+  const previous = reviews[currentIndex - 1];
+  const next = reviews[currentIndex + 1];
+
+  return (
+    <nav
+      aria-label={locale === "pl" ? "Nawigacja między opiniami" : "Review navigation"}
+      className={`${styles.reviewStepper} ${dark ? styles.reviewStepperDark : ""}`}
+    >
+      <button disabled={!previous} onClick={() => previous && selectReview(previous.id)} type="button">
+        <span aria-hidden="true">←</span> {c.previous}
+      </button>
+      <span aria-live="polite">{reviews.length ? currentIndex + 1 : 0} / {reviews.length}</span>
+      <button disabled={!next} onClick={() => next && selectReview(next.id)} type="button">
+        {c.next} <span aria-hidden="true">→</span>
+      </button>
+    </nav>
+  );
+}
+
 function DesktopWorkspace(props: WorkspaceProps) {
   const c = ui[props.locale];
   const pendingCount = demoReviews.filter((review) => props.state.statuses[review.id] !== "approved").length;
@@ -592,7 +628,15 @@ function DesktopWorkspace(props: WorkspaceProps) {
           </div>
         </aside>
         <section className={styles.detailPanel}>
-          <p className={styles.eyebrow}>{c.workflow}</p>
+          <div className={styles.detailNavigation}>
+            <p className={styles.eyebrow}>{c.workflow}</p>
+            <ReviewStepper
+              locale={props.locale}
+              reviews={props.filtered}
+              selectedId={props.selected.id}
+              selectReview={props.selectReview}
+            />
+          </div>
           <ReviewDetail locale={props.locale} review={props.selected} status={props.state.statuses[props.selected.id]} />
           <SessionSummary locale={props.locale} openCta={props.openCta} reset={() => props.setState(createInitialState())} state={props.state} />
         </section>
@@ -603,9 +647,7 @@ function DesktopWorkspace(props: WorkspaceProps) {
 }
 
 function MobileWorkspace(props: WorkspaceProps) {
-  const c = ui[props.locale];
-  const currentIndex = props.filtered.findIndex((review) => review.id === props.selected.id);
-  const next = props.filtered[(currentIndex + 1 + props.filtered.length) % props.filtered.length];
+  const currentIndex = Math.max(0, props.filtered.findIndex((review) => review.id === props.selected.id));
   return (
     <main className={`${styles.workspace} ${styles.mobileWorkspace}`}>
       <header className={styles.focusHeader}>
@@ -617,9 +659,14 @@ function MobileWorkspace(props: WorkspaceProps) {
           <span style={{ width: `${Math.max(9, ((currentIndex + 1) / Math.max(1, props.filtered.length)) * 100)}%` }} />
         </div>
         <div className={styles.focusKicker}>
-          <span>{currentIndex + 1} / {props.filtered.length}</span>
           <strong>{props.selected.detail[props.locale]}</strong>
-          <button onClick={() => props.selectReview(next?.id ?? props.selected.id)} type="button">{c.next} →</button>
+          <ReviewStepper
+            dark
+            locale={props.locale}
+            reviews={props.filtered}
+            selectedId={props.selected.id}
+            selectReview={props.selectReview}
+          />
         </div>
         <div className={styles.focusGrid}>
           <ReviewDetail locale={props.locale} review={props.selected} status={props.state.statuses[props.selected.id]} />
@@ -708,13 +755,30 @@ export function DemoPrototype({
     setState((current) => ({ ...current, selectedId: id, viewed: unique(current.viewed, id) }));
   }
 
+  function changeFilter(nextFilter: Filter) {
+    setFilter(nextFilter);
+    setState((current) => {
+      const matches = demoReviews.filter((review) => {
+        if (nextFilter === "all") return true;
+        if (["quick", "personalize", "caution"].includes(nextFilter)) return review.category === nextFilter;
+        return current.statuses[review.id] === nextFilter;
+      });
+      if (matches.some((review) => review.id === current.selectedId) || !matches[0]) return current;
+      return {
+        ...current,
+        selectedId: matches[0].id,
+        viewed: unique(current.viewed, matches[0].id),
+      };
+    });
+  }
+
   const props: WorkspaceProps = {
     locale,
     state,
     selected,
     filtered,
     filter,
-    setFilter,
+    setFilter: changeFilter,
     selectReview,
     setState,
     openCta: () => setCtaOpen(true),
