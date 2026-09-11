@@ -5,98 +5,102 @@ export const landingCopy = {
     languageHref: "/",
     languageCode: "EN",
     brandTagline: "audyt opinii Google",
-    navCta: "Zapisz sie na pilotaz",
+    navCta: "Poproś o audyt",
     audience: "dla restauracji i lokali gastronomicznych",
-    heroTitle: "Sprawdz, czy opinie Google nie zabieraja Ci rezerwacji.",
+    heroTitle: "Sprawdź, czy opinie Google nie zabierają Ci rezerwacji.",
     heroDescription:
-      "Audyt opinii Google dla restauracji: wskazuje recenzje wymagajace reakcji, wychwytuje sygnaly wpisow botowych, kupionych lub zlosliwych i podpowiada, na co odpowiedziec w pierwszej kolejnosci.",
-    primaryCta: "Sprawdz moja wizytowke",
-    secondaryCta: "Zapisz sie na pilotaz",
+      "Audyt opinii Google dla restauracji: wskazuje recenzje wymagające reakcji, wychwytuje sygnały wpisów botowych, kupionych lub złośliwych i podpowiada, na co odpowiedzieć w pierwszej kolejności.",
+    primaryCta: "Sprawdź moją wizytówkę",
+    secondaryCta: "Zobacz, co dostajesz",
+    priceLabel: "Cena:",
+    price: "49 zł za pierwszy ręcznie przygotowany audyt.",
     heroNote:
-      "Pilotaz dla pierwszych restauracji. Bez obietnic usuwania opinii — dostajesz konkretna analize i plan reakcji.",
-    sampleLabel: "przykladowy mini-audyt",
-    sampleTitle: "Restauracja po weekendzie",
+      "Oferta dla pierwszych restauracji. Bez obietnic usuwania opinii — dostajesz konkretną analizę i plan reakcji.",
+    sampleLabel: "przykładowy audyt",
+    sampleAnonymized: "dane zanonimizowane",
+    sampleTitle: "Jedna opinia. Konkretna reakcja.",
     sampleDescription:
-      "Zamiast panelu SaaS na start dostajesz konkretna analize opinii wedlug checklisty i gotowa liste dzialan.",
-    sampleFindings: [
+      "Tak wygląda fragment ręcznie przygotowanego audytu dla restauracji.",
+    sampleAuthor: "Pani M.",
+    sampleRatingLabel: "1 gwiazdka na 5",
+    sampleReview:
+      "Za długi czas oczekiwania. Kelnerka powiedziała, że za 5 minut, a minęła godzina.",
+    sampleMetrics: [
       {
-        label: "Ryzyko",
-        value: "3 opinie bez odpowiedzi",
-        detail:
-          "Dwie z nich sa widoczne wysoko w profilu i moga zniechecac nowych gosci.",
+        label: "Priorytet odpowiedzi",
+        value: "Wysoki",
       },
       {
-        label: "Szybka reakcja",
-        value: "24-48 h",
-        detail:
-          "Najpierw odpowiadamy na najnowsze negatywne wpisy, bez eskalowania konfliktu.",
+        label: "Ryzyko wizerunkowe",
+        value: "Wysokie",
       },
       {
-        label: "Do weryfikacji",
-        value: "2 podejrzane wpisy",
-        detail:
-          "Widzimy sygnaly wpisow botowych, kupionych lub zlosliwych. Pokazujemy, co wzbudza podejrzenie i czy sa podstawy do zgloszenia.",
+        label: "Podejrzenie spamu",
+        value: "Niskie",
       },
     ],
+    sampleResponseLabel: "proponowana odpowiedź",
+    sampleResponse:
+      "Pani M., przepraszamy za tak długi czas oczekiwania oraz za przekazanie informacji, która nie odpowiadała rzeczywistej sytuacji. Rozumiemy, jak frustrujące musiało być oczekiwanie przez godzinę po zapowiedzi kilku minut. Chcielibyśmy sprawdzić, co wydarzyło się podczas Pani wizyty. Prosimy o kontakt w wiadomości prywatnej oraz podanie dnia i przybliżonej godziny wizyty. Dziękujemy za zwrócenie nam uwagi na ten problem.",
+    sampleNote:
+      "Przykład opracowany na podstawie publicznej opinii. Dane autorki i restauracji zostały zanonimizowane.",
     problemLabel: "problem",
-    problemTitle: "Jedna zla opinia moze wisiec wyzej niz menu dnia.",
+    problemTitle: "Jedna zła opinia może wisieć wyżej niż menu dnia.",
     problems: [
-      "Nie widzisz nowych negatywnych opinii wystarczajaco szybko.",
-      "Nie wiesz, jak odpowiedziec profesjonalnie, bez przyznawania winy.",
-      "Nie wiesz, czy wpis jest prawdziwy, zlosliwy, botowy lub kupiony — i czy warto go zglosic.",
+      "Nie widzisz nowych negatywnych opinii wystarczająco szybko.",
+      "Nie wiesz, jak odpowiedzieć profesjonalnie, bez przyznawania winy.",
+      "Nie wiesz, czy wpis jest prawdziwy, złośliwy, botowy lub kupiony — i czy warto go zgłosić.",
     ],
     deliverablesLabel: "co dostajesz",
-    deliverablesTitle: "Audyt opinii, ktory da sie wdrozyc bez nowego systemu.",
+    deliverablesTitle: "Audyt opinii, który da się wdrożyć bez nowego systemu.",
     deliverablesDescription:
-      "W pilotazu nie podlaczamy jeszcze API Google. Sprawdzamy opinie wedlug checklisty i odsylamy konkret: co odpowiedziec, co obserwowac i ktore wpisy warto zweryfikowac lub zglosic.",
+      "Nie musisz podłączać API Google ani wdrażać nowego systemu. Sprawdzamy opinie według checklisty i odsyłamy konkret: co odpowiedzieć, co obserwować i które wpisy warto zweryfikować lub zgłosić.",
     auditItems: [
-      "Opinie 1-3 gwiazdki, ktore wymagaja spokojnej odpowiedzi",
-      "Sygnaly opinii botowych, kupionych lub celowo zlosliwych — do dalszej weryfikacji",
+      "Opinie 1-3 gwiazdki, które wymagają spokojnej odpowiedzi",
+      "Sygnały opinii botowych, kupionych lub celowo złośliwych — do dalszej weryfikacji",
       "Gotowe propozycje odpowiedzi do wklejenia w Google",
-      "Materialy pomocnicze do zgloszenia opinii naruszajacej zasady Google",
+      "Materiały pomocnicze do zgłoszenia opinii naruszającej zasady Google",
     ],
-    pilotLabel: "pilotaz",
-    pilotTitle: "Sprawdzamy, czy taki audyt ma sens dla restauracji.",
-    pilotDescription:
-      "To wczesny pilotaz. Chcemy poznac realne problemy restauratorow i sprawdzic, czy analiza opinii oraz gotowy plan reakcji sa dla nich pomocne.",
+    processLabel: "jak to działa",
+    processTitle: "Od profilu Google do gotowego planu reakcji.",
+    processDescription:
+      "Na początek przygotowujemy audyty ręcznie, aby każda restauracja otrzymała konkretną analizę i plan reakcji.",
     outreachSteps: [
       "Zostawiasz link do profilu Google.",
-      "Sprawdzamy opinie wedlug checklisty i przygotowujemy mini-audyt.",
-      "Dostajesz plan reakcji, propozycje odpowiedzi i nastepne kroki.",
+      "Sprawdzamy opinie według checklisty i przygotowujemy mini-audyt.",
+      "Dostajesz plan reakcji, propozycje odpowiedzi i następne kroki.",
     ],
     formLabel: "formularz",
     formTitle: "Chcesz audyt opinii dla swojej restauracji?",
     formDescription:
-      "Wyslij link do profilu Google. Odpowiemy z informacja, czy widac opinie wymagajace reakcji i czy pilotaz ma sens dla Twojego lokalu.",
+      "Wyślij link do profilu Google. Odpowiemy z informacją, czy widać opinie wymagające reakcji i czy audyt będzie przydatny dla Twojego lokalu.",
     form: {
       honeypot: "Strona internetowa",
-      name: "Imie",
-      namePlaceholder: "np. Jakub",
       email: "Email",
       emailPlaceholder: "kontakt@restauracja.pl",
       restaurant: "Nazwa restauracji",
       restaurantPlaceholder: "np. Restauracja Rynek 12",
       googleUrl: "Link do profilu Google",
       googleUrlPlaceholder: "https://maps.google.com/...",
-      problem: "Najwiekszy problem z opiniami",
+      problem: "Największy problem z opiniami",
       problemPlaceholder:
-        "np. Mamy kilka opinii 1-2 gwiazdki bez odpowiedzi albo podejrzany wpis, ktory chcemy zweryfikowac.",
-      submit: "Wyslij prosbe o audyt",
-      submitting: "Wysylamy zgloszenie...",
+        "np. Mamy kilka opinii 1-2 gwiazdki bez odpowiedzi albo podejrzany wpis, który chcemy zweryfikować.",
+      submit: "Wyślij prośbę o audyt",
+      submitting: "Wysyłamy zgłoszenie...",
       privacy:
-        "Po wyslaniu dane trafia bezposrednio do ReviewGuard. Odpowiemy na podany adres e-mail.",
+        "Po wysłaniu dane trafią bezpośrednio do ReviewGuard. Odpowiemy na podany adres e-mail.",
       success:
-        "Zgloszenie zostalo wyslane. Dziekujemy — odezwiemy sie na podany adres.",
+        "Zgłoszenie zostało wysłane. Dziękujemy — odezwiemy się na podany adres.",
       shareLabel: "przekaz dalej",
       shareDescription:
-        "Znasz restauracje, ktorej przydaloby sie uporzadkowanie opinii Google? Przeslij jej link do ReviewGuard.",
+        "Znasz restaurację, której przydałoby się uporządkowanie opinii Google? Prześlij jej link do ReviewGuard.",
       share: "Przekaz ReviewGuard dalej",
-      shared: "Dziekujemy za polecenie",
+      shared: "Dziękujemy za polecenie",
       shareText:
-        "Sprawdz ReviewGuard — pilotaz audytu opinii Google dla restauracji.",
+        "Sprawdź ReviewGuard — ręcznie przygotowany audyt opinii Google dla restauracji.",
       shareError:
-        "Nie udalo sie udostepnic linku. Skopiuj go z paska przegladarki.",
-      error: "Nie udalo sie wyslac zgloszenia. Sprobuj ponownie za chwile.",
+        "Nie udało się udostępnić linku. Skopiuj go z paska przeglądarki.",
+      error: "Nie udało się wysłać zgłoszenia. Spróbuj ponownie za chwilę.",
     },
   },
   en: {
@@ -105,39 +109,45 @@ export const landingCopy = {
     languageHref: "/pl",
     languageCode: "PL",
     brandTagline: "Google review audit",
-    navCta: "Join the pilot",
+    navCta: "Request an audit",
     audience: "for restaurants and hospitality businesses",
     heroTitle: "Find out whether your Google reviews are costing you bookings.",
     heroDescription:
       "A focused Google review audit for restaurants. We identify reviews that need a response, flag signals of spam, paid, or malicious activity for closer review, and show you what to address first.",
     primaryCta: "Audit my profile",
-    secondaryCta: "Join the pilot",
+    secondaryCta: "See what you get",
+    priceLabel: "Pilot pricing:",
+    price: "Set separately for the English-speaking market.",
     heroNote:
-      "An early pilot for a small group of restaurants. No promises of removing reviews — just a clear analysis and response plan.",
-    sampleLabel: "sample mini-audit",
-    sampleTitle: "The Monday morning review check",
+      "An introductory offer for the first restaurants. No promises of removing reviews — just a clear analysis and response plan.",
+    sampleLabel: "sample audit",
+    sampleAnonymized: "details anonymized",
+    sampleTitle: "One review. A clear response.",
     sampleDescription:
-      "You do not need another dashboard. You get a practical review analysis, checked against a clear framework, with a ready-to-use action list.",
-    sampleFindings: [
+      "This is an excerpt from a manually prepared restaurant review audit.",
+    sampleAuthor: "Ms M.",
+    sampleRatingLabel: "1 star out of 5",
+    sampleReview:
+      "The wait was far too long. The waitress said it would take 5 minutes, but an hour passed.",
+    sampleMetrics: [
+      {
+        label: "Response priority",
+        value: "High",
+      },
       {
         label: "Reputation risk",
-        value: "3 unanswered reviews",
-        detail:
-          "Two appear prominently on the profile and may discourage potential guests.",
+        value: "High",
       },
       {
-        label: "Response window",
-        value: "24-48 hours",
-        detail:
-          "Start with the most recent negative reviews and respond without escalating the situation.",
-      },
-      {
-        label: "Needs review",
-        value: "2 suspicious entries",
-        detail:
-          "We found signals that may indicate spam, paid, or malicious reviews. We explain what looks unusual and whether there may be grounds to report them.",
+        label: "Spam suspicion",
+        value: "Low",
       },
     ],
+    sampleResponseLabel: "suggested response",
+    sampleResponse:
+      "Ms M., we are sorry for the long wait and for giving you information that did not reflect the actual situation. We understand how frustrating it must have been to wait an hour after being told it would take only a few minutes. We would like to look into what happened during your visit. Please contact us privately with the date and approximate time of your visit. Thank you for bringing this issue to our attention.",
+    sampleNote:
+      "This example is based on a public review. The reviewer and restaurant details have been anonymized.",
     problemLabel: "the problem",
     problemTitle: "One bad review can outrank tonight's menu.",
     problems: [
@@ -148,17 +158,17 @@ export const landingCopy = {
     deliverablesLabel: "what you get",
     deliverablesTitle: "A review audit you can act on without adopting new software.",
     deliverablesDescription:
-      "The pilot does not require a Google API connection. We review your profile against a clear checklist and send back the essentials: what to respond to, what to watch, and which entries may warrant verification or reporting.",
+      "You do not need to connect the Google API or adopt new software. We review your profile against a clear checklist and send back the essentials: what to respond to, what to watch, and which entries may warrant verification or reporting.",
     auditItems: [
       "1-3 star reviews that need a calm, professional response",
       "Signals of automated, paid, or deliberately malicious reviews — flagged for further verification",
       "Ready-to-edit response drafts for your Google profile",
       "Supporting notes for reviews that may violate Google's policies",
     ],
-    pilotLabel: "the pilot",
-    pilotTitle: "Help us test a practical review audit for restaurants.",
-    pilotDescription:
-      "This is an early pilot. We want to understand the real reputation challenges restaurant owners face and test whether a focused audit and response plan genuinely help.",
+    processLabel: "how it works",
+    processTitle: "From your Google profile to a clear response plan.",
+    processDescription:
+      "We currently prepare each audit by hand, so every restaurant receives a focused analysis and a practical response plan.",
     outreachSteps: [
       "Send us your Google Business Profile link.",
       "We review the profile against our checklist and prepare a mini-audit.",
@@ -167,11 +177,9 @@ export const landingCopy = {
     formLabel: "request an audit",
     formTitle: "Want a review audit for your restaurant?",
     formDescription:
-      "Send us your Google Business Profile link. We will let you know what needs attention and whether the pilot is a good fit for your restaurant.",
+      "Send us your Google Business Profile link. We will let you know what needs attention and whether an audit would be useful for your restaurant.",
     form: {
       honeypot: "Website",
-      name: "Name",
-      namePlaceholder: "e.g. Alex",
       email: "Email",
       emailPlaceholder: "hello@yourrestaurant.com",
       restaurant: "Restaurant name",
@@ -193,7 +201,7 @@ export const landingCopy = {
       share: "Share ReviewGuard",
       shared: "Thanks for sharing",
       shareText:
-        "Take a look at ReviewGuard — a pilot Google review audit for restaurants.",
+        "Take a look at ReviewGuard — a manually prepared Google review audit for restaurants.",
       shareError:
         "We could not share the link. Copy it from your browser's address bar instead.",
       error: "We could not send your request. Please try again in a moment.",

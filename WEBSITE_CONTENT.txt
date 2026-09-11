@@ -18,7 +18,7 @@ ReviewGuard
 audyt opinii Google
 
 Przycisk:
-Zapisz sie na pilotaz
+Poproś o audyt
 
 
 === HERO / PIERWSZA SEKCJA ===
@@ -36,37 +36,39 @@ Glowny przycisk:
 Sprawdz moja wizytowke
 
 Drugi przycisk:
-Zapisz sie na pilotaz
+Zobacz, co dostajesz
+
+Cena:
+49 zł za pierwszy ręcznie przygotowany audyt.
 
 Informacja pod przyciskami:
-Pilotaz dla pierwszych restauracji. Bez obietnic usuwania opinii — dostajesz konkretna analize i plan reakcji.
+Oferta dla pierwszych restauracji. Bez obietnic usuwania opinii — dostajesz konkretną analizę i plan reakcji.
 
 
-=== PRZYKLADOWY MINI-AUDYT ===
+=== PRZYKŁADOWY AUDYT ===
 
 Etykieta:
-przykladowy mini-audyt
+przykładowy audyt
 
 Naglowek:
-Restauracja po weekendzie
+Jedna opinia. Konkretna reakcja.
 
 Opis:
-Zamiast panelu SaaS na start dostajesz konkretna analize opinii wedlug checklisty i gotowa liste dzialan.
+Tak wygląda fragment ręcznie przygotowanego audytu dla restauracji.
 
-Karta 1:
-Ryzyko
-3 opinie bez odpowiedzi
-Dwie z nich sa widoczne wysoko w profilu i moga zniechecac nowych gosci.
+Opinia — Pani M., 1 gwiazdka:
+„Za długi czas oczekiwania. Kelnerka powiedziała, że za 5 minut, a minęła godzina.”
 
-Karta 2:
-Szybka reakcja
-24-48 h
-Najpierw odpowiadamy na najnowsze negatywne wpisy, bez eskalowania konfliktu.
+Ocena:
+Priorytet odpowiedzi: wysoki
+Ryzyko wizerunkowe: wysokie
+Podejrzenie spamu: niskie
 
-Karta 3:
-Do weryfikacji
-2 podejrzane wpisy
-Sprawdzamy wzorce i wskazujemy, czy sa podstawy do zgloszenia ich do Google.
+Proponowana odpowiedź:
+Pani M., przepraszamy za tak długi czas oczekiwania oraz za przekazanie informacji, która nie odpowiadała rzeczywistej sytuacji. Rozumiemy, jak frustrujące musiało być oczekiwanie przez godzinę po zapowiedzi kilku minut. Chcielibyśmy sprawdzić, co wydarzyło się podczas Pani wizyty. Prosimy o kontakt w wiadomości prywatnej oraz podanie dnia i przybliżonej godziny wizyty. Dziękujemy za zwrócenie nam uwagi na ten problem.
+
+Adnotacja:
+Przykład opracowany na podstawie publicznej opinii. Dane autorki i restauracji zostały zanonimizowane.
 
 
 === SEKCJA: PROBLEM ===
@@ -92,7 +94,7 @@ Naglowek:
 Audyt opinii, ktory da sie wdrozyc bez nowego systemu.
 
 Opis:
-W pilotazu nie podlaczamy jeszcze API Google. Sprawdzamy opinie wedlug checklisty i odsylamy konkret: co odpowiedziec, co obserwowac i ktore wpisy warto zweryfikowac lub zglosic.
+Nie musisz podłączać API Google ani wdrażać nowego systemu. Sprawdzamy opinie według checklisty i odsyłamy konkret: co odpowiedzieć, co obserwować i które wpisy warto zweryfikować lub zgłosić.
 
 Zakres audytu:
 1. Opinie 1-3 gwiazdki, ktore wymagaja spokojnej odpowiedzi
@@ -101,16 +103,16 @@ Zakres audytu:
 4. Materialy pomocnicze do zgloszenia opinii naruszajacej zasady Google
 
 
-=== SEKCJA: PILOTAZ ===
+=== SEKCJA: JAK TO DZIAŁA ===
 
 Etykieta:
-pilotaz
+jak to działa
 
 Naglowek:
-Sprawdzamy, czy taki audyt ma sens dla restauracji.
+Od profilu Google do gotowego planu reakcji.
 
 Opis:
-To wczesny pilotaz. Chcemy poznac realne problemy restauratorow i sprawdzic, czy analiza opinii oraz gotowy plan reakcji sa dla nich pomocne.
+Na początek przygotowujemy audyty ręcznie, aby każda restauracja otrzymała konkretną analizę i plan reakcji.
 
 Kroki:
 01. Zostawiasz link do profilu Google.
@@ -127,25 +129,21 @@ Naglowek:
 Chcesz audyt opinii dla swojej restauracji?
 
 Opis:
-Wyslij link do profilu Google. Odpowiemy z informacja, czy widac opinie wymagajace reakcji i czy pilotaz ma sens dla Twojego lokalu.
+Wyślij link do profilu Google. Odpowiemy z informacją, czy widać opinie wymagające reakcji i czy audyt będzie przydatny dla Twojego lokalu.
 
 Pole 1:
-Imie
-Placeholder: np. Jakub
-
-Pole 2:
 Email
 Placeholder: kontakt@restauracja.pl
 
-Pole 3:
+Pole 2:
 Nazwa restauracji
 Placeholder: np. Restauracja Rynek 12
 
-Pole 4:
+Pole 3:
 Link do profilu Google
 Placeholder: https://maps.google.com/...
 
-Pole 5:
+Pole 4:
 Najwiekszy problem z opiniami
 Placeholder: np. Mamy kilka opinii 1-2 gwiazdki bez odpowiedzi albo podejrzany wpis, ktory chcemy zweryfikowac.
 
@@ -181,12 +179,11 @@ Nie udalo sie wyslac zgloszenia. Sprobuj ponownie za chwile.
 === TRESC GENEROWANEGO MAILA ===
 
 Temat:
-Pilotaz ReviewGuard - [nazwa restauracji]
+Audyt ReviewGuard - [nazwa restauracji]
 
 Tresc:
-Nowe zgloszenie do pilotazu ReviewGuard
+Nowe zgłoszenie audytu ReviewGuard
 
-Imie: [imie]
 Email: [email]
 Restauracja: [nazwa restauracji]
 Link do profilu Google: [link]

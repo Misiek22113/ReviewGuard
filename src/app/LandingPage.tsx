@@ -8,7 +8,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
     <main className="min-h-screen overflow-hidden bg-[#f7f2e8] text-[#17211c]">
       <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 py-5 sm:px-8 lg:px-10">
         <nav
-          aria-label={locale === "en" ? "Main navigation" : "Glowna nawigacja"}
+          aria-label={locale === "en" ? "Main navigation" : "Główna nawigacja"}
           className="flex items-center justify-between gap-4 border-b border-[#17211c]/15 pb-5"
         >
           <a className="flex min-w-0 items-center gap-3" href="#top" aria-label="ReviewGuard">
@@ -24,7 +24,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </a>
           <div className="flex shrink-0 items-center gap-2">
             <a
-              aria-label={`${locale === "en" ? "Switch to" : "Przelacz na"} ${copy.languageName}`}
+              aria-label={`${locale === "en" ? "Switch to" : "Przełącz na"} ${copy.languageName}`}
               className="grid min-h-10 min-w-10 place-items-center rounded-sm border border-[#17211c]/25 px-2 font-mono text-xs font-semibold transition hover:border-[#17211c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c]"
               href={copy.languageHref}
               hrefLang={copy.language === "en" ? "pl" : "en"}
@@ -34,7 +34,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
             </a>
             <a
               className="hidden rounded-sm border border-[#17211c] px-4 py-2 text-sm font-semibold transition hover:bg-[#17211c] hover:text-[#f7f2e8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c] sm:block"
-              href="#pilot"
+              href="#request-audit"
             >
               {copy.navCta}
             </a>
@@ -58,7 +58,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 className="rounded-sm bg-[#17211c] px-6 py-4 text-center text-sm font-bold text-[#f7f2e8] transition hover:bg-[#2e3b34] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#17211c]"
-                href="#pilot"
+                href="#request-audit"
               >
                 {copy.primaryCta}
               </a>
@@ -69,37 +69,80 @@ export function LandingPage({ locale }: { locale: Locale }) {
                 {copy.secondaryCta}
               </a>
             </div>
-            <p className="mt-5 max-w-xl text-sm leading-6 text-[#657068]">
+            <p className="mt-5 inline-flex flex-wrap items-baseline gap-x-2 border-l-4 border-[#17211c] bg-[#d6f36a] px-4 py-3 text-sm">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.14em]">
+                {copy.priceLabel}
+              </span>
+              <strong className="text-base">{copy.price}</strong>
+            </p>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-[#657068]">
               {copy.heroNote}
             </p>
           </div>
 
           <aside className="border border-[#17211c] bg-[#fffdf7] p-5 shadow-[14px_14px_0_#17211c]">
             <div className="border-b border-[#17211c]/15 pb-5">
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#657068]">
-                {copy.sampleLabel}
-              </p>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#657068]">
+                  {copy.sampleLabel}
+                </p>
+                <p className="rounded-full border border-[#17211c]/15 px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-[#657068]">
+                  {copy.sampleAnonymized}
+                </p>
+              </div>
               <h2 className="mt-3 text-3xl font-bold">{copy.sampleTitle}</h2>
               <p className="mt-3 text-sm leading-6 text-[#526157]">
                 {copy.sampleDescription}
               </p>
             </div>
-            <div className="mt-5 space-y-3">
-              {copy.sampleFindings.map((finding) => (
-                <article
-                  className="border border-[#17211c]/10 bg-[#f7f2e8] p-4"
-                  key={finding.label}
+
+            <article className="mt-5 border border-[#17211c]/15 bg-[#f7f2e8] p-4">
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="grid size-9 shrink-0 place-items-center rounded-full bg-[#17211c] font-mono text-sm font-bold text-[#d6f36a]"
                 >
-                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[#657068]">
-                    {finding.label}
+                  M.
+                </span>
+                <div>
+                  <p className="text-sm font-bold">{copy.sampleAuthor}</p>
+                  <p
+                    aria-label={copy.sampleRatingLabel}
+                    className="font-mono text-sm tracking-[0.08em] text-[#c75833]"
+                  >
+                    ★☆☆☆☆
                   </p>
-                  <h3 className="mt-2 text-xl font-bold">{finding.value}</h3>
-                  <p className="mt-2 text-sm leading-6 text-[#526157]">
-                    {finding.detail}
-                  </p>
-                </article>
+                </div>
+              </div>
+              <blockquote className="mt-3 text-sm font-medium leading-6">
+                “{copy.sampleReview}”
+              </blockquote>
+            </article>
+
+            <dl className="mt-3 grid grid-cols-3 border border-[#17211c]/15 bg-[#17211c]">
+              {copy.sampleMetrics.map((metric) => (
+                <div
+                  className="border-r border-[#f7f2e8]/15 p-3 last:border-r-0"
+                  key={metric.label}
+                >
+                  <dt className="font-mono text-[9px] font-semibold uppercase leading-4 tracking-[0.11em] text-[#b9c4bc]">
+                    {metric.label}
+                  </dt>
+                  <dd className="mt-1 text-sm font-bold text-[#d6f36a]">{metric.value}</dd>
+                </div>
               ))}
+            </dl>
+
+            <div className="mt-3 border-l-4 border-[#d6f36a] bg-[#eef4dc] p-4">
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#657068]">
+                {copy.sampleResponseLabel}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-[#39483f]">
+                {copy.sampleResponse}
+              </p>
             </div>
+
+            <p className="mt-3 text-xs leading-5 text-[#657068]">{copy.sampleNote}</p>
           </aside>
         </div>
       </section>
@@ -151,11 +194,11 @@ export function LandingPage({ locale }: { locale: Locale }) {
         <div className="mx-auto grid max-w-7xl gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-10">
           <div>
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#d6f36a]">
-              {copy.pilotLabel}
+              {copy.processLabel}
             </p>
-            <h2 className="mt-3 text-4xl font-bold leading-tight">{copy.pilotTitle}</h2>
+            <h2 className="mt-3 text-4xl font-bold leading-tight">{copy.processTitle}</h2>
             <p className="mt-5 text-base leading-7 text-[#dbe4d8]">
-              {copy.pilotDescription}
+              {copy.processDescription}
             </p>
           </div>
           <div className="grid gap-3 md:grid-cols-3">
@@ -173,7 +216,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
 
       <section
         className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-10"
-        id="pilot"
+        id="request-audit"
       >
         <div>
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#657068]">

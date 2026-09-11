@@ -1,7 +1,6 @@
 import { Resend } from "resend";
 
 type LeadPayload = {
-  name?: unknown;
   email?: unknown;
   restaurant?: unknown;
   googleUrl?: unknown;
@@ -41,14 +40,13 @@ export async function POST(request: Request) {
   try {
     payload = (await request.json()) as LeadPayload;
   } catch {
-    return Response.json({ error: "Nieprawidlowe dane formularza." }, { status: 400 });
+    return Response.json({ error: "Nieprawidłowe dane formularza." }, { status: 400 });
   }
 
   if (typeof payload.website === "string" && payload.website.trim()) {
     return Response.json({ success: true });
   }
 
-  const name = readText(payload.name, 100);
   const email = readText(payload.email, 254);
   const restaurant = readText(payload.restaurant, 160);
   const googleUrl = readText(payload.googleUrl, 2_000);
@@ -56,7 +54,6 @@ export async function POST(request: Request) {
   const locale = payload.locale === "en" ? "en" : "pl";
 
   if (
-    !name ||
     !email ||
     !EMAIL_PATTERN.test(email) ||
     !restaurant ||
@@ -65,7 +62,7 @@ export async function POST(request: Request) {
     !problem
   ) {
     return Response.json(
-      { error: "Uzupelnij poprawnie wszystkie pola formularza." },
+      { error: "Uzupełnij poprawnie wszystkie pola formularza." },
       { status: 400 },
     );
   }
@@ -78,17 +75,16 @@ export async function POST(request: Request) {
   if (!apiKey || !notificationEmail) {
     console.error("Brakuje konfiguracji RESEND_API_KEY lub LEAD_NOTIFICATION_EMAIL.");
     return Response.json(
-      { error: "Formularz jest chwilowo niedostepny." },
+      { error: "Formularz jest chwilowo niedostępny." },
       { status: 503 },
     );
   }
 
   const resend = new Resend(apiKey);
   const message = [
-    "New ReviewGuard pilot request",
+    "New ReviewGuard audit request",
     "",
     `Language: ${locale.toUpperCase()}`,
-    `Name: ${name}`,
     `Email: ${email}`,
     `Restaurant: ${restaurant}`,
     `Google Business Profile: ${googleUrl}`,
@@ -102,23 +98,23 @@ export async function POST(request: Request) {
       from: fromEmail,
       to: notificationEmail,
       replyTo: email,
-      subject: `ReviewGuard pilot (${locale.toUpperCase()}) - ${restaurant}`,
+      subject: `ReviewGuard audit (${locale.toUpperCase()}) - ${restaurant}`,
       text: message,
     });
 
     if (error) {
-      console.error("Resend nie wyslal zgloszenia:", error);
+      console.error("Resend nie wysłał zgłoszenia:", error);
       return Response.json(
-        { error: "Nie udalo sie wyslac zgloszenia." },
+        { error: "Nie udało się wysłać zgłoszenia." },
         { status: 502 },
       );
     }
 
     return Response.json({ success: true });
   } catch (error) {
-    console.error("Blad wysylki zgloszenia:", error);
+    console.error("Błąd wysyłki zgłoszenia:", error);
     return Response.json(
-      { error: "Nie udalo sie wyslac zgloszenia." },
+      { error: "Nie udało się wysłać zgłoszenia." },
       { status: 502 },
     );
   }

@@ -4,7 +4,7 @@
 
 ReviewGuard to docelowo web app SaaS dla lokalnych firm, ktora pomaga monitorowac opinie Google, szybko reagowac na negatywne lub podejrzane recenzje oraz zbierac wiecej prawdziwych opinii od klientow.
 
-Pierwszy etap nie jest pelnym SaaS. To walidacyjny concierge MVP dla restauracji: landing page, oferta audytu opinii Google wedlug checklisty, formularz leadowy mailto i outbound do 20-50 lokali.
+Pierwszy etap nie jest pelnym SaaS. To walidacyjny concierge MVP dla operatorow pojedynczych restauracji w Polsce o duzym wolumenie lub zaleglosci opinii: landing page, klikalna demonstracja, reczna obsluga wedlug checklisty i pozniejszy outbound do kwalifikowanych operatorow z calego kraju. Obecna probka lokali z Lodzi sluzy do zebrania opinii do demo, a nie jako gotowa lista kontaktow handlowych.
 
 Produkt jest skierowany do wlascicieli malych firm: salonow beauty, gabinetow stomatologicznych, fizjoterapeutow, restauracji, warsztatow, trenerow, korepetytorow i innych lokalnych uslugodawcow.
 
@@ -29,10 +29,11 @@ Najwazniejszym ryzykiem jest popyt, nie technologia. Przed budowa panelu, bazy d
 
 ### Cel walidacji
 
-- zdobyc feedback od 20-50 restauracji,
-- sprawdzic, czy ktos pyta o cene, rozmowe lub pilotaz,
-- zweryfikowac gotowosc placenia od 49 zl / miesiac,
-- nauczyc sie, jak restauratorzy opisuja problem opinii Google wlasnymi slowami.
+- skontaktowac sie z co najmniej 20 kwalifikowanymi operatorami,
+- odbyc co najmniej 5 rozmow,
+- przeprowadzic co najmniej 3 demonstracje na opiniach danego operatora,
+- pozyskac co najmniej 2 platne pilotaze cyklicznej obslugi,
+- nauczyc sie, jak operatorzy opisuja problem opinii Google wlasnymi slowami.
 
 ### Walidacyjne MVP
 
@@ -41,18 +42,34 @@ Najwazniejszym ryzykiem jest popyt, nie technologia. Przed budowa panelu, bazy d
 - formularz leadowy mailto bez backendu,
 - obietnica audytu opinii Google wedlug checklisty,
 - przykladowy mini-raport zamiast dashboardu,
-- cena pilotazowa od 49 zl / miesiac,
+- cena pilotazowa 80 zl za 30 dni, jedna lokalizacje i maksymalnie 20 przetworzonych opinii,
 - outbound email/formularze WWW.
+
+Klikalne demo ogolne korzysta z 10-12 zanonimizowanych, wiernie adaptowanych opinii jednego profilu Pizzerii Kultowej Retkinia, aby zachowac spojny styl, lecz publicznie wystepuje pod fikcyjna marka `Pizzeria Sasiedzka`. Obejmuje kolejke i filtrowanie, podglad oraz edycje sugestii, wybor stylu, kontekst managera, ponowne wygenerowanie z przygotowanych wariantow, zatwierdzenie i kopiowanie odpowiedzi. Nie laczy sie z modelem AI ani backendem; stan zapisuje lokalnie w przegladarce i pozwala go zresetowac. Integracja publikujaca do Google jest tylko nieaktywna zapowiedzia. Podsumowanie sesji pokazuje wykonane dzialania i jawnie opisany szacunek oszczedzonego czasu, bez zdalnej analityki. Filtr mozliwych naruszen pokazuje `0` zamiast sztucznego przypadku.
+
+Pierwszy prototyp to jedno publiczne demo w wersji polskiej i angielskiej, z ta sama reaktywna kolejka i stanem. Polska wersja znajduje sie pod `/pl/demo-prototype`, a angielska pod `/demo-prototype`. Wybrany uklad pokazuje `Dyspozytornie` na desktopie i automatycznie przechodzi w `Tryb skupienia` na ekranach mobilnych. Adres nie zawiera parametru wyboru ukladu, a odrzucone warianty i przelacznik nie sa czescia glownego kodu. Prywatny wariant powstaje pozniej, na prosbe zainteresowanego operatora, z jego opiniami i niepublicznym linkiem waznym 14 dni. Nie jest czescia pierwszej implementacji.
+
+Panel jest przeznaczony dla osoby odpowiedzialnej za opinie, bez wzgledu na jej stanowisko. Obsluguje statusy `Nowa`, `Wymaga kontekstu`, `Gotowa do zatwierdzenia` i `Zatwierdzona`; kopiowanie jest tylko zdarzeniem sesji. Style to `Cieply i profesjonalny`, `Krotki i rzeczowy` oraz `Swobodny i goscinny`, z wyborem krotkiej albo standardowej dlugosci. Szacunek demonstracyjny przyjmuje 6 minut na samodzielne napisanie oraz 1 minute na sprawdzenie sugestii, czyli 5 minut oszczednosci na zatwierdzonej odpowiedzi.
 
 ### Oferta pilotazu
 
-W pilotazu uzytkownik dostaje recznie przygotowany audyt opinii:
+Pilotaz trwa 30 dni. Uzytkownik dostaje recznie przygotowana obsluge opinii:
 
 - opinie 1-3 gwiazdki wymagajace reakcji,
 - podejrzane lub ryzykowne wzorce opinii,
 - propozycje profesjonalnych odpowiedzi,
 - plan zbierania prawdziwych opinii od gosci,
 - rekomendowane kolejne kroki.
+
+Klient zatwierdza odpowiedzi i sam publikuje je w Google. Jakosc pilotazu mierzymy odsetkiem przygotowanych odpowiedzi, czasem przygotowania, odsetkiem sugestii zaakceptowanych bez duzych zmian, zmniejszeniem zaleglosci, oszczedzonym czasem i checia kontynuacji po 30 dniach.
+
+ReviewGuard sprawdza profil w kazdy dzien roboczy i przygotowuje odpowiedz najpozniej do konca nastepnego dnia roboczego. Styl odpowiedzi jest konfigurowalny: w demo wynika z dotychczasowych odpowiedzi lokalu, a w pilotazu osoba odpowiedzialna za opinie wybiera ton oraz preferowane i zakazane zwroty. Przy trudnym zdarzeniu moze dodac krotka notatke z faktami od managera; bez niej odpowiedz pozostaje neutralna i nie wymysla szczegolow.
+
+Pierwsza oferta pilotazowa kosztuje 80 zl za jedna lokalizacje i maksymalnie 20 przetworzonych opinii. Niewykorzystany limit przechodzi na kolejne miesiace do maksymalnego salda 40 opinii. Pierwsze dwa pilotaze sa swiadomie subsydiowane; mierzymy rzeczywisty czas pracy ReviewGuard.
+
+Cena 80 zl dotyczy wylacznie walidacji oferty na rynku polskim. Wersja angielska produktu nie pokazuje tej ceny; zakres i cena oferty dla rynku anglojezycznego beda walidowane osobno.
+
+Publiczne demo nie przyjmuje platnosci. Po zgloszeniu zainteresowania ReviewGuard potwierdza zakres i wolne miejsce, a nastepnie wysyla link do platnosci lub dane do przelewu. Pelny checkout i automatyczna obsluga subskrypcji sa poza etapem walidacyjnym.
 
 Nie obiecujemy automatycznego usuwania opinii. Nie sugerujemy manipulowania recenzjami. Nie generujemy falszywych opinii.
 
@@ -178,26 +195,15 @@ Przykladowy tekst:
 
 ## Cennik
 
-### Starter: 49 zl/mies.
+### Pilot: 80 zl za 30 dni
 
 - 1 lokalizacja,
-- monitoring opinii,
-- alerty w dashboardzie,
-- reczny import opinii.
+- maksymalnie 20 przetworzonych opinii,
+- niewykorzystany limit przechodzi dalej do maksymalnego salda 40 opinii,
+- recznie przygotowywane propozycje odpowiedzi do zatwierdzenia,
+- pierwsze dwa pilotaze sa subsydiowanym kosztem walidacji.
 
-### Pro: 99 zl/mies.
-
-- wszystko ze Starter,
-- generator odpowiedzi,
-- case file do zgloszen,
-- miesieczny raport reputacji.
-
-### Rescue: 299 zl jednorazowo
-
-- pakiet awaryjny dla firm, ktore dostaly serie negatywnych opinii,
-- analiza opinii,
-- gotowe odpowiedzi,
-- instrukcja zgloszen.
+Pakiety dla wielu lokalizacji sa pozniejsza hipoteza, a nie obecna oferta. Wariant 100 zl za 2 lokalizacje oraz wariant 200 zl za nieograniczona liczbe lokalizacji wymagaja osobnej walidacji kosztu, limitu opinii i gotowosci do zaplaty.
 
 ## Stack techniczny
 
@@ -307,7 +313,7 @@ Walidacyjne MVP jest gotowe, gdy:
 - landing mowi konkretnie do restauracji,
 - CTA prowadza do formularza pilotazu,
 - formularz tworzy gotowa wiadomosc mailto,
-- cena od 49 zl / miesiac jest widoczna,
+- cena pilotazu 80 zl jest widoczna,
 - playbook pozwala wyslac 20-50 wiadomosci outbound,
 - komunikacja nie obiecuje usuwania opinii ani manipulowania recenzjami.
 

@@ -7,8 +7,6 @@ type ShareStatus = "idle" | "done" | "error";
 
 type FormCopy = {
   honeypot: string;
-  name: string;
-  namePlaceholder: string;
   email: string;
   emailPlaceholder: string;
   restaurant: string;
@@ -97,28 +95,16 @@ export function LeadForm({ copy, locale }: { copy: FormCopy; locale: "pl" | "en"
         <input autoComplete="off" name="website" tabIndex={-1} type="text" />
       </label>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="grid gap-2 text-sm font-semibold">
-          {copy.name}
-          <input
-            className="border border-[#17211c]/20 bg-white px-4 py-3 text-base font-normal outline-none transition focus:border-[#17211c]"
-            name="name"
-            placeholder={copy.namePlaceholder}
-            required
-            type="text"
-          />
-        </label>
-        <label className="grid gap-2 text-sm font-semibold">
-          {copy.email}
-          <input
-            className="border border-[#17211c]/20 bg-white px-4 py-3 text-base font-normal outline-none transition focus:border-[#17211c]"
-            name="email"
-            placeholder={copy.emailPlaceholder}
-            required
-            type="email"
-          />
-        </label>
-      </div>
+      <label className="grid gap-2 text-sm font-semibold">
+        {copy.email}
+        <input
+          className="border border-[#17211c]/20 bg-white px-4 py-3 text-base font-normal outline-none transition focus:border-[#17211c]"
+          name="email"
+          placeholder={copy.emailPlaceholder}
+          required
+          type="email"
+        />
+      </label>
 
       <label className="mt-4 grid gap-2 text-sm font-semibold">
         {copy.restaurant}
