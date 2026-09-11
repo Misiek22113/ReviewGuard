@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 
-type FormStatus = "idle" | "success" | "error";
+type FormStatus = "idle" | "submitting" | "success" | "error";
 type ShareStatus = "idle" | "done" | "error";
 
 type FormCopy = {
@@ -16,6 +16,7 @@ type FormCopy = {
   problem: string;
   problemPlaceholder: string;
   submit: string;
+  submitting: string;
   privacy: string;
   success: string;
   shareLabel: string;
@@ -25,61 +26,37 @@ type FormCopy = {
   shareText: string;
   shareError: string;
   error: string;
-  mailto: {
-    subjectPrefix: string;
-    greeting: string;
-    intro: string;
-    locationLabel: string;
-    contactLabel: string;
-    profileLabel: string;
-    workflowLabel: string;
-  };
 };
 
-export function LeadForm({
-  contactEmail,
-  copy,
-}: {
-  contactEmail: string;
-  copy: FormCopy;
-}) {
+export function LeadForm({ copy, locale }: { copy: FormCopy; locale: "pl" | "en" }) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [shareStatus, setShareStatus] = useState<ShareStatus>("idle");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+
+    setStatus("submitting");
     setShareStatus("idle");
 
-    if (!contactEmail) {
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      form.reset();
+      setStatus("success");
+    } catch {
       setStatus("error");
-      return;
     }
-
-    if (String(formData.get("website") ?? "").trim()) return;
-
-    const restaurant = String(formData.get("restaurant") ?? "").trim();
-    const email = String(formData.get("email") ?? "").trim();
-    const googleUrl = String(formData.get("googleUrl") ?? "").trim();
-    const problem = String(formData.get("problem") ?? "").trim();
-    const subject = `${copy.mailto.subjectPrefix}: ${restaurant}`;
-    const body = [
-      copy.mailto.greeting,
-      "",
-      copy.mailto.intro,
-      "",
-      `${copy.mailto.locationLabel}: ${restaurant}`,
-      `${copy.mailto.contactLabel}: ${email}`,
-      `${copy.mailto.profileLabel}: ${googleUrl}`,
-      "",
-      `${copy.mailto.workflowLabel}:`,
-      problem,
-    ];
-
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body.join("\n"))}`;
-    setStatus("success");
   }
 
   async function handleShare() {
@@ -111,6 +88,8 @@ export function LeadForm({
       className="border border-[#17211c] bg-[#fffdf7] p-5 shadow-[10px_10px_0_#17211c]"
       onSubmit={handleSubmit}
     >
+      <input name="locale" type="hidden" value={locale} />
+
       <label className="absolute -left-[9999px]" aria-hidden="true">
         {copy.honeypot}
         <input autoComplete="off" name="website" tabIndex={-1} type="text" />
@@ -161,9 +140,10 @@ export function LeadForm({
 
       <button
         className="mt-5 w-full rounded-sm bg-[#17211c] px-6 py-4 text-sm font-bold text-[#f7f2e8] transition hover:bg-[#2e3b34] disabled:cursor-wait disabled:opacity-60"
+        disabled={status === "submitting"}
         type="submit"
       >
-        {copy.submit}
+        {status === "submitting" ? copy.submitting : copy.submit}
       </button>
 
       <p className="mt-4 text-sm leading-6 text-[#657068]">

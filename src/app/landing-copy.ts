@@ -88,11 +88,12 @@ export const landingCopy = {
       problem: "Jak dziś zajmujecie się opiniami?",
       problemPlaceholder:
         "np. Odpowiada właściciel raz w tygodniu; mamy około 25 opinii bez odpowiedzi.",
-      submit: "Przygotuj wiadomość zgłoszeniową",
+      submit: "Wyślij zgłoszenie",
+      submitting: "Wysyłamy zgłoszenie...",
       privacy:
-        "Formularz otworzy gotową wiadomość w Twoim programie pocztowym. Nic nie zostanie wysłane bez Twojego potwierdzenia.",
+        "Dane z formularza zostaną wysłane bezpośrednio do ReviewGuard przez Resend. Odpowiemy na podany adres e-mail.",
       success:
-        "Gotowa wiadomość została otwarta w programie pocztowym. Sprawdź ją i wyślij, kiedy będziesz gotowy.",
+        "Zgłoszenie zostało wysłane. Dziękujemy — odezwiemy się na podany adres.",
       shareLabel: "przekaz dalej",
       shareDescription:
         "Znasz restaurację, której przydałoby się uporządkowanie opinii Google? Prześlij jej link do ReviewGuard.",
@@ -103,15 +104,6 @@ export const landingCopy = {
       shareError:
         "Nie udało się udostępnić linku. Skopiuj go z paska przeglądarki.",
       error: "Nie udało się wysłać zgłoszenia. Spróbuj ponownie za chwilę.",
-      mailto: {
-        subjectPrefix: "ReviewGuard — zgłoszenie pilotażu",
-        greeting: "Dzień dobry,",
-        intro: "chcę zgłosić lokal do pilotażu ReviewGuard.",
-        locationLabel: "Lokal",
-        contactLabel: "Email kontaktowy",
-        profileLabel: "Profil Google",
-        workflowLabel: "Obecny sposób obsługi opinii",
-      },
     },
   },
   en: {
@@ -203,11 +195,12 @@ export const landingCopy = {
       problem: "How do you handle reviews today?",
       problemPlaceholder:
         "e.g. The owner replies once a week and we have around 25 unanswered reviews.",
-      submit: "Prepare enquiry email",
+      submit: "Send enquiry",
+      submitting: "Sending your enquiry...",
       privacy:
-        "The form opens a prepared message in your email app. Nothing is sent until you confirm it.",
+        "Your form details are sent directly to ReviewGuard through Resend. We will reply to the email address you provide.",
       success:
-        "The prepared message is open in your email app. Review it and send it when you are ready.",
+        "Your enquiry has been sent. Thank you — we will be in touch by email.",
       shareLabel: "share ReviewGuard",
       shareDescription:
         "Know a restaurant that could use a clearer approach to Google reviews? Send them ReviewGuard.",
@@ -218,15 +211,6 @@ export const landingCopy = {
       shareError:
         "We could not share the link. Copy it from your browser's address bar instead.",
       error: "We could not send your request. Please try again in a moment.",
-      mailto: {
-        subjectPrefix: "ReviewGuard pilot enquiry",
-        greeting: "Hello,",
-        intro: "I would like to enquire about the ReviewGuard pilot.",
-        locationLabel: "Location",
-        contactLabel: "Contact email",
-        profileLabel: "Google Business Profile",
-        workflowLabel: "Current review workflow",
-      },
     },
   },
 } as const;

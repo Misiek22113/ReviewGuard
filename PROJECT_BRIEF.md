@@ -39,11 +39,13 @@ Najwazniejszym ryzykiem jest popyt, nie technologia. Przed budowa panelu, bazy d
 
 - landing page kierowany do restauracji,
 - jasne CTA: "Sprawdz moja wizytowke" i "Zapisz sie na pilotaz",
-- formularz leadowy mailto bez backendu,
+- formularz leadowy wysylajacy zgloszenie bezposrednio przez Resend,
 - obietnica audytu opinii Google wedlug checklisty,
 - przykladowy mini-raport zamiast dashboardu,
 - cena pilotazowa 80 zl za 30 dni, jedna lokalizacje i maksymalnie 20 przetworzonych opinii,
 - outbound email/formularze WWW.
+
+Formularz pilotazu wysyla zgloszenie od razu, bez przekierowania do programu pocztowego. Zmniejsza to tarcie i ryzyko porzucenia formularza przez osobe, ktora nie ma skonfigurowanego klienta poczty albo nie chce opuszczac strony. Po udanej wysylce uzytkownik widzi jednoznaczne potwierdzenie na stronie.
 
 Klikalne demo ogolne korzysta z 10-12 zanonimizowanych, wiernie adaptowanych opinii jednego profilu Pizzerii Kultowej Retkinia, aby zachowac spojny styl, lecz publicznie wystepuje pod fikcyjna marka `Pizzeria Sasiedzka`. Obejmuje kolejke i filtrowanie, podglad oraz edycje sugestii, wybor stylu, kontekst managera, ponowne wygenerowanie z przygotowanych wariantow, zatwierdzenie i kopiowanie odpowiedzi. Nie laczy sie z modelem AI ani backendem; stan zapisuje lokalnie w przegladarce i pozwala go zresetowac. Integracja publikujaca do Google jest tylko nieaktywna zapowiedzia. Podsumowanie sesji pokazuje wykonane dzialania i jawnie opisany szacunek oszczedzonego czasu, bez zdalnej analityki. Filtr mozliwych naruszen pokazuje `0` zamiast sztucznego przypadku.
 
@@ -301,7 +303,7 @@ Dashboard powinien byc najwazniejszym ekranem po zalogowaniu.
 ## Pierwszy etap implementacji
 
 1. Dopolerowac landing pod walidacje restauracji.
-2. Dodac formularz leadowy mailto bez backendu.
+2. Dodac formularz leadowy wysylajacy zgloszenie bezposrednio przez Resend, bez otwierania programu pocztowego uzytkownika.
 3. Przygotowac playbook outbound do 20-50 restauracji.
 4. Recznie zebrac sygnaly popytu.
 5. Dopiero po potwierdzeniu popytu budowac panel, baze danych, platnosci i integracje.
@@ -312,7 +314,7 @@ Walidacyjne MVP jest gotowe, gdy:
 
 - landing mowi konkretnie do restauracji,
 - CTA prowadza do formularza pilotazu,
-- formularz tworzy gotowa wiadomosc mailto,
+- formularz wysyla zgloszenie bezposrednio do ReviewGuard przez Resend i pokazuje potwierdzenie bez opuszczania strony,
 - cena pilotazu 80 zl jest widoczna,
 - playbook pozwala wyslac 20-50 wiadomosci outbound,
 - komunikacja nie obiecuje usuwania opinii ani manipulowania recenzjami.

@@ -238,10 +238,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           <h2 className="mt-3 text-4xl font-bold leading-tight">{copy.formTitle}</h2>
           <p className="mt-5 text-lg leading-8 text-[#526157]">{copy.formDescription}</p>
         </div>
-        <LeadForm
-          contactEmail={process.env.LEAD_NOTIFICATION_EMAIL ?? ""}
-          copy={copy.form}
-        />
+        <LeadForm copy={copy.form} locale={locale} />
       </section>
     </main>
   );
